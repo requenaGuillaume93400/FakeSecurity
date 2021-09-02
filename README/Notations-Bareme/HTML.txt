@@ -1,0 +1,42 @@
+
+INACCEPTABLE (au moins un des points suivants) :
+● duplication d’id					=> NON
+● css inline						=> NON (exception faite pour SVG (height et width) dans homepage.phtml & services.phtml)
+● balise style dans le html (en-tête ou corps)		=> NON (exception pour la génération de PDF & Mail, pas le choix, voir dans les templates pdf & mail)
+● uniquement bootstrap					=> NON
+● js inline						=> NON
+● charset invalide ou non pertinent			=> NON, je ne penses pas
+
+
+LÉGER (tous les points suivants) :
+● bonne indentation					=> OUI, je penses
+● bonne structure					=> OUI, je penses
+● balises fermantes fermées				=> OUI
+● responsive						=> OUI (voir meta viewport dans le layount.phtml ligne 10 & la partie css main.css Ligne 1336 ou main.scss Ligne 1334)
+● alt sur les <img>					=> OUI (exemple header.phtml ligne 7, footer.phtml ligne 64, modals.phtml lignes 372, 381 etc...)
+● bonne utilisation des balises sémantiques
+	○ pas d’imbrication incompréhensible (ex : article dans section dans article)	=> NON, à priori
+	○ pas d’imbrication douteuse (article dans header)				=> NON, à priori
+● accessibilité ok					=> OUI, je penses
+● types supportés dans les input			=> OUI, les input ont toujours un type associés (voir demand.phtml par exemple)
+● formulaire propre et utilisation de label		=> OUI (voir demand.phtml par exemple)
+● pas trop de <br>					=> OUI (aucun <br>)
+
+
+OK (tous les points suivants) :
+● Utilisation de font-family (même prise sur Google Fonts)	=> OUI (voir main.scss lignes 17 à 30)
+● commentaires							=> OUI (généralement pour aider a se repérer et parfois pour expliquer)
+● title sur les <a>						=> OUI (sauf pour le <nav>, exemple footer.phtml lignes 34, 70 à 82)
+● utilisation correcte des balises HTML5			=> OUI, je penses, à voir
+● aucun <br>							=> OUI (aucun <br>, exception pour le Mail généré et envoyé lors d'une demande, pas eu le choix)
+
+
+BIEN (tous les points suivants) :
+● “valide” W3C				=> OUI (toutes les pages valide sauf une -> sanction.phtml : 1 erreur récalcitrante qui reste quoi que je fasse)
+● code parfaitement propre		=> Je ne sais pas
+
+
+TB (deux des points suivants) :
+● SEO-friendly			=> Je pense, à voir  (meta descritpion, strong, h1, h2, h3, h4, alt sur les img, mot clef fakesecurity répété, url rewriting)
+● création SVG			=> OUI  (voir homepage.phtml lignes 63 à 65)
+● backend admin étoffé		=> OUI, je penses (voir backOffice.phtml & modify.phtml)

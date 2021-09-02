@@ -1,0 +1,109 @@
+<!-- ======================================= MAIN ============================================== -->
+<main>
+    <h1>Sanctionner un agent</h1>
+
+    <p><a href="bonus">Bonus</a></p>
+
+    <!-- Notification message if a sanction has been added successfully -->
+    <p class="<?php if(isset($notifSuccess)) echo 'success'; ?>"><?php if(isset($notifSuccess)) echo $notifSuccess; ?></p>
+
+    <!-- Form to add a new sanction for a selected agent -->
+    <form method="POST">
+
+        <!-- IDENTIFICATION of agent to blame -->
+        <fieldset>
+            <legend id="toggle-id" class="obligatory">Agent</legend>
+
+            <div class="field">
+                <label for="id-agent">id - matricule - nom - prénom :</label>
+                <select name="id-agent" id="id-agent" required>
+                    
+                    <option value="">&nbsp;</option>
+                    
+                    <?php foreach($agents as $index => $value): ?>
+                        <option value="<?= intval($agents[$index]['id']) ?>">
+                            <?= intval($agents[$index]['id']) ?> - 
+                            <?php if($agents[$index]['matricule'] !== null){ 
+                                    // If agent's matricule has been defined by an admin, echo matricule, else echo 'indéfini'
+                                    echo htmlspecialchars($agents[$index]['matricule']);
+                                }else{
+                                    echo 'indéfini';
+                                } 
+                            ?> - 
+                            <?= htmlspecialchars($agents[$index]['lastName']) ?> - 
+                            <?= htmlspecialchars($agents[$index]['firstName']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                    
+                </select>
+            </div>
+            <p class="errors"><?php if(isset($_GET['agent'])) echo $dataStatut[$notifIa]; ?></p>
+        </fieldset>
+
+        <!-- DATES of summon & notification -->
+        <fieldset>
+            <legend id="toggle-dates" class="obligatory">Dates</legend>
+
+            <!-- Summon date (to hear agent before notify him his blame) -->
+            <div class="field">
+                <label for="begin-date">Date de convocation :</label>
+                <input
+                    type="date"
+                    id="begin-date"
+                    name="begin-date"
+                    value="2021-07-01"
+                    min="2021-06-25"
+                    max="2050-12-31"
+                    required
+                />
+            </div>
+
+            <!-- Notification date -->
+            <div class="field">
+                <label for="end-date">Date de notification :</label>
+                <input
+                    type="date"
+                    id="end-date"
+                    name="end-date"
+                    value="2021-07-02"
+                    min="2021-06-25"
+                    max="2050-12-31"
+                    required
+                />
+            </div>
+            <!-- Error message if an error has occurred -->
+            <p class="errors"><?php if(isset($_GET['date'])) echo $dataStatut[$notifD]; ?></p>
+        </fieldset>
+
+        <!-- Entitled & Reason for the blame -->
+        <fieldset>
+            <legend id="toggle-entitled" class="obligatory">Sanction</legend>
+
+            <!-- Entitled of the blame -->
+            <div class="field">
+                <label for="id-sanction">Intitulé :</label>
+                <select name="id-sanction" id="id-sanction" required>
+                    <?php foreach($sanctions as $index => $value): ?>
+                        <option value="<?= htmlspecialchars($sanctions[$index]['id']) ?>">
+                            <?= htmlspecialchars($sanctions[$index]['entitled']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <!-- Error message if an error has occurred -->
+            <p class="errors"><?php if(isset($_GET['sanction'])) echo $dataStatut[$notifIs]; ?></p>            
+
+            <!-- Reason for the blame -->
+            <div class="field">
+                <label for="reason">Motif :</label>
+                <input type="text" id="reason" name="reason" required>
+            </div>
+            <!-- Error message if an error has occurred -->
+            <p class="errors"><?php if(isset($_GET['reason'])) echo $dataStatut[$notifR]; ?></p>                      
+        </fieldset>
+
+        <!-- Submit button to add a new sanction -->
+        <input type="submit" name="submit" id="submit-new" value="Enregistrer" />
+
+    </form>
+</main>

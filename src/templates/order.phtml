@@ -1,0 +1,172 @@
+<!-- ======================================= MAIN ============================================== -->
+<main>
+    <h1>Ajouter une commande</h1>
+
+    <p><a href="bonus">Bonus</a></p>
+
+    <!-- Notification message if an order has been added successfully -->
+    <p class="<?php if(isset($notifSuccess)) echo 'success'; ?>"><?php if(isset($notifSuccess)) echo $notifSuccess; ?></p>
+
+    <!-- Form to add an order -->
+    <form method="POST">
+
+        <!-- DATES -->
+        <fieldset>
+            <legend id="toggle-dates" class="obligatory">Dates</legend>
+
+            <!-- Begin date of work -->
+            <div class="field">
+                <label for="begin-date">Date de début de prestation :</label>
+                <input
+                    type="date"
+                    id="begin-date"
+                    name="begin-date"
+                    value="2021-07-01"
+                    min="2021-06-25"
+                    max="2050-12-31"
+                    required
+                />
+            </div>
+
+            <!-- End date of work -->
+            <div class="field">
+                <label for="end-date">Date de fin de prestation :</label>
+                <input
+                    type="date"
+                    id="end-date"
+                    name="end-date"
+                    value="2021-07-02"
+                    min="2021-06-25"
+                    max="2050-12-31"
+                    required
+                />
+            </div>
+            <!-- Error message if an error has occurred -->
+            <p class="errors"><?php if(isset($_GET['date'])) echo $dataStatut[$notifDate]; ?></p>
+        </fieldset>
+
+        <!-- LEADER -->
+        <fieldset >
+            <legend id="toggle-lead" class="optionnal">Chef de site</legend>
+
+            <div class="field">
+                <label for="lead-hours">Heures commandées :</label>
+                <input type="number" name="lead-hours" id="lead-hours"/>
+            </div>
+            <!-- Error message if an error has occurred -->
+            <p class="errors"><?php if(isset($_GET['lh'])) echo $dataStatut[$notifLh]; ?></p>
+        </fieldset>
+
+        <!-- TEAM LEADER -->
+        <fieldset >
+            <legend id="toggle-team" class="optionnal">Chef d'équipe</legend>
+
+            <div class="field">
+                <label for="team-hours">Heures commandées :</label>
+                <input type="number" name="team-hours" id="team-hours"/>
+            </div>
+            <!-- Error message if an error has occurred -->
+            <p class="errors"><?php if(isset($_GET['th'])) echo $dataStatut[$notifTh]; ?></p>
+        </fieldset>
+
+        <!-- SUPPORT TEAM LEADER -->
+        <fieldset >
+            <legend id="toggle-support" class="optionnal">
+                Adjoints chef d'équipe
+            </legend>
+
+            <div class="field">
+                <label for="support-hours">Heures commandées :</label>
+                <input type="number" name="support-hours" id="support-hours" />
+            </div>
+            <!-- Error message if an error has occurred -->
+            <p class="errors"><?php if(isset($_GET['sh'])) echo $dataStatut[$notifSh]; ?></p>
+        </fieldset>
+
+        <!-- VIDEO AGENT -->
+        <fieldset  >
+            <legend id="toggle-video" class="optionnal">Opérateurs video</legend>
+
+            <div class="field">
+                <label for="video-hours">Heures commandées :</label>
+                <input type="number" name="video-hours" id="video-hours" />
+            </div>
+            <!-- Error message if an error has occurred -->
+            <p class="errors"><?php if(isset($_GET['vh'])) echo $dataStatut[$notifVh]; ?></p>
+        </fieldset>
+
+        <!-- SIMPLE AGENT -->
+        <fieldset>
+            <legend class="obligatory" id="toggle-agent">Agents de sécurité</legend>
+
+            <div class="field">
+                <label for="agent-hours">Heures commandées :</label>
+                <input type="number" name="agent-hours" id="agent-hours" required/>
+            </div>
+            <!-- Error message if an error has occurred -->
+            <p class="errors"><?php if(isset($_GET['ah'])) echo $dataStatut[$notifAh]; ?></p>
+        </fieldset>
+
+        <!-- AGENT WITH DOG -->
+        <fieldset >
+            <legend id="toggle-dog" class="optionnal">Agents cynophiles</legend>
+
+            <div class="field">
+                <label for="dog-hours">Heures commandées :</label>
+                <input type="number" name="dog-hours" id="dog-hours" />
+            </div>
+            <!-- Error message if an error has occurred -->
+            <p class="errors"><?php if(isset($_GET['dh'])) echo $dataStatut[$notifDh]; ?></p>
+        </fieldset>
+
+        <!-- CLIENT IDENTIFICATION INFOS -->
+        <fieldset>
+            <legend id="toggle-id" class="optionnal">Infos Client</legend>
+
+            <div class="field">
+                <label for="id-client">id - site - nom - prénom :</label>
+                <select name="id-client" id="id-client" required>
+                    
+                    <option value="">&nbsp;</option>
+                    
+                    <?php foreach($clients as $index => $value): ?>
+                        <!-- format : id - siteName - lastName - firstName -->
+                        <option value="<?= intval($clients[$index]['id']) ?>">
+                            <?= intval($clients[$index]['id']) ?> -
+                            <?php 
+                                if($clients[$index]['siteName'] !== null){ 
+                                    // If client's siteName has been defined, show siteName, else show 'indéfini'
+                                    echo htmlspecialchars($clients[$index]['siteName']);
+                                }else{
+                                    echo 'indéfini';
+                                } 
+                            ?> - 
+                            <?= htmlspecialchars($clients[$index]['lastName']) ?> - 
+                            <?= htmlspecialchars($clients[$index]['firstName']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                    
+                </select>
+            </div>
+            <!-- Error message if an error has occurred -->
+            <p class="errors"><?php if(isset($_GET['id'])) echo $dataStatut[$notifId]; ?></p>
+        </fieldset>
+
+        <!-- PRICE -->
+        <fieldset class="last-fieldset">
+            <legend id="toggle-price" class="obligatory">Prix</legend>
+            <p class="recommandations">Format deux chiffres après la virgule (exemples 43,99 ou 43.00)</p>
+
+            <!-- Price (format 22,76 or 23.00 for exemple) -->
+            <div class="field">
+                <label for="priceTTC">Prix TTC € :</label>
+                <input type="number" name="priceTTC" id="priceTTC" step=".01" required/>
+            </div>
+            <!-- Error message if an error has occurred -->
+            <p class="errors"><?php if(isset($_GET['ttc'])) echo $dataStatut[$notifTtc]; ?></p>
+        </fieldset>
+
+        <!-- Submit to add a new order -->
+        <input type="submit" name="submit" id="submit-new" value="Enregistrer" />
+    </form>
+</main>

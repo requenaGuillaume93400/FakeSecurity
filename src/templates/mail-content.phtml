@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demande de devis</title>
+    <style>
+        h1{
+            color:blue;
+            text-align:center;
+        }
+        h1 + p{
+            font-weight:bold;
+        }
+        p{
+            text-align: center;
+        }
+        table{            
+            border-collapse: collapse;
+            margin: 0 auto;
+            min-width: 100px;
+        }
+        td,
+        caption{
+            border: 1px solid black;
+            padding: 5px;
+        }
+        .colored{            
+            background-color: rgb(231, 243, 254); /* $main-color */
+        }
+        caption{
+            font-weight: bold;
+            font-size: 16px;
+            border-bottom: transparent;                       
+            background-color: #251a8f; /* $secondary-color */
+            color: rgba(255, 255, 255, 1); /* $light */
+        }
+        .flex-data{
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }    
+    </style>
+</head>
+<body>
+
+    <div >
+        <img src="http://projet/assets/img/banner-1.png" alt="Bannière FakeSecurity">
+        <h1>Demande de devis <?= $lastName ?></h1> 
+        <p>Identifiant <?= \Session::showStatut() ?> : <?= \Session::showId() ?></p>
+
+        <div class="flex-data">
+
+            <table style="font-weight:bold;">
+                <caption>Prix total</caption>
+                <tr>
+                    <td>Prix HT : </td>
+                    <td><?= number_format($priceHT, 2, ',', ' ') ?> €</td>
+                </tr>
+                <tr class="colored">
+                    <td>TVA 20% : </td>
+                    <td><?= number_format($amountTVA, 2, ',', ' ') ?> €</td>
+                </tr>
+                <tr>
+                    <td>Prix TTC : </td>
+                    <td><?= number_format($priceTTC, 2, ',', ' ') ?> €</td>
+                </tr>
+                <tr class="colored">
+                    <td>Benefices : </td>
+                    <td><?= number_format($myBenef, 2, ',', ' ') ?> €</td>
+                </tr>
+            </table>
+    
+            <table>
+                <caption>Infos</caption>
+                <tr>
+                    <td>Nom : </td>
+                    <td><?= $lastName ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Prénom : </td>
+                    <td><?= $firstName ?></td>
+                </tr>
+                <tr>
+                    <td>Société : </td>
+                    <td><?= $society ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Tel : </td>
+                    <td><?= $phone ?></td>
+                </tr>
+                <tr>
+                    <td>Mail : </td>
+                    <td><?= $mail ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Type de site : </td>
+                    <td><?= $siteType ?></td>
+                </tr>
+                <tr>
+                    <td>Nom du site : </td>
+                    <td><?= $siteName ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Superficie en m² :</td>
+                    <td><?= $superficie ?></td>
+                </tr>
+            </table>
+    
+            <table>
+                <caption>Période</caption>
+                <tr>
+                    <td>Date de début : </td>
+                    <td><?= $dateBegin ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Date de fin : </td>
+                    <td><?= $dateEnd ?></td>
+                </tr>
+            </table>
+
+        </div>
+
+        <p>Informations complémentaires : <?= $additional ?></p>
+
+        <div class="flex-data">
+
+            <table>
+                <caption>Chef de site</caption>
+                <tr>
+                    <td>Jours : </td>
+                    <td><?= $leadDays ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Heures : </td>
+                    <td><?= $leadHours ?></td>
+                </tr>
+                <tr>
+                    <td>Prix de base : </td>
+                    <td><?= number_format($leadPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+                <tr class="colored">
+                    <td>Prix avec benefices : </td>
+                    <td><?= number_format($leadFinalPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+            </table>
+    
+            <table>
+                <caption>Chef d'équipe</caption>
+                <tr>
+                    <td>Jours : </td>
+                    <td><?= $teamDays ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Heures : </td>
+                    <td><?= $teamHours ?></td>
+                </tr>
+                <tr>
+                    <td>Prix de base : </td>
+                    <td><?= number_format($teamPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+                <tr class="colored">
+                    <td>Prix avec benefices : </td>
+                    <td><?= number_format($teamFinalPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+            </table>
+    
+            <table>
+                <caption>Adjoint chef d'équipe</caption>
+                <tr>
+                    <td>Nombre : </td>
+                    <td><?= $supportNumber ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Jours : </td>
+                    <td><?= $supportDays ?></td>
+                </tr>
+                <tr>
+                    <td>Heures : </td>
+                    <td><?= $supportHours ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Prix de base : </td>
+                    <td><?= number_format($supportPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+                <tr>
+                    <td>Prix avec benefices : </td>
+                    <td><?= number_format($supportFinalPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div class="flex-data">
+
+            <table>
+                <caption>Agents de sécurité</caption>
+                <tr>
+                    <td>Nombre : </td>
+                    <td><?= $agentNumber ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Jours : </td>
+                    <td><?= $agentDays ?></td>
+                </tr>
+                <tr>
+                    <td>Heures : </td>
+                    <td><?= $agentHours ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Prix de base : </td>
+                    <td><?= number_format($agentPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+                <tr>
+                    <td>Prix avec benefices : </td>
+                    <td><?= number_format($agentFinalPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+            </table>
+    
+            <table>
+                <caption>Opérateurs video</caption>
+                <tr>
+                    <td>Nombre : </td>
+                    <td><?= $videoNumber ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Jours : </td>
+                    <td><?= $videoDays ?></td>
+                </tr>
+                <tr>
+                    <td>Heures : </td>
+                    <td><?= $videoHours ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Prix de base : </td>
+                    <td><?= number_format($videoPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+                <tr>
+                    <td>Prix avec benefices : </td>
+                    <td><?= number_format($videoFinalPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+            </table>
+    
+            <table>
+                <caption>Agents cynophiles</caption>
+                <tr>
+                    <td>Nombre :</td>
+                    <td><?= $dogNumber ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Jours : </td>
+                    <td><?= $dogDays ?></td>
+                </tr>
+                <tr>
+                    <td>Heures : </td>
+                    <td><?= $dogHours ?></td>
+                </tr>
+                <tr class="colored">
+                    <td>Prix de base : </td>                
+                    <td><?= number_format($dogPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+                <tr>
+                    <td>Prix avec benefices : </td>
+                    <td><?= number_format($dogFinalPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+            </table>
+
+        </div>
+        <img src="http://projet/assets/img/banner-2.png" alt="Bannière FakeSecurity">
+    </div>
+</body>
+</html>

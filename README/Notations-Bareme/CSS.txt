@@ -1,0 +1,45 @@
+
+INACCEPTABLE (au moins un des points suivants) :
+● bootstrap/équivalent seul		=> NON
+● erreurs classes ou sélecteurs		=> NON, je ne penses pas
+● plusieurs feuilles css		=> NON
+
+
+LÉGER (tous les points suivants) :
+● code personnel						=> OUI
+● responsive et media query					=> OUI (voir ligne 1331 main.scss)
+● utilisation des id uniquement pour les ancres			=> OUI (pas d'id dans le css)
+● base bootstrap/équivalent acceptée (mais non obligatoire)	=> NON
+
+
+OK (tous les points suivants) :
+● commentaires (ex : /* HEADER */ pour les balises du header)		=> OUI
+● pas de !important (sauf exceptionnellement dans un framework)		=> OUI (pas de !important du tout)
+● code structuré							=> OUI, je penses
+● code ordonné par rapport au html (header en haut, footer en bas, etc…)=> OUI
+● dénomination intelligente des classes					=> OUI, je penses
+● définition globale (ex : h1 toujours rouge)				=> OUI (exemple font-family etc ligne 402 et font-size ligne 417)
+	○ (et au moins un des points suivants) :
+		● animation	=> OUI (voir les class success & fail, lignes 609 à 658)
+		● transform	=> OUI (beaucoup de transform translate & scale, exemple lignes 233, 690, 871, 1017 etc...)
+		● gradient	=> OUI (revoir les class success & fail lignes 610 & 629)
+
+
+BIEN (tous les points suivants) :
+● pas de css externe (sauf font/normalize/reset/plugins jquery)		=> OUI, layout.phtml stylesheet ligne 18 & CDN font awesome ligne 12
+● mobile first								=> OUI (voir le commentaire ligne 1556)
+● rgba									=> OUI (lignes 1, 2, 7, 8, 10, 11 etc...)
+	○ (et au moins un des points suivants) :
+		● sélecteurs avancés			=> OUI (h1 + p ligne 904, el[type=""] ligne 598, imbrication sass etc...) 
+		● pseudo classe				=> OUI (hover ligne 244, active ligne 284, first child 290, nth 508 etc...)
+		● utilisation d’une nomenclature reconnue (ex : BEM, OOCSS, etc…)  => OUI, brièvement (lignes 482 - 491)
+	○ (et au moins un des points suivants) :
+		● flex		=> OUI (exemple ligne 219, 261, 535 etc...)
+		● grid		=> NON
+
+
+TB (au moins un des points suivants) :
+● responsive tailles intermédiaires		=> OUI, je penses (voir lignes 1334 à 1915)
+● préprocesseur (sass/less/stylus)		=> OUI, utilisation de SASS
+● utilisation de variables css			=> OUI, variables SASS (voir ligne 1 à 14)
+● utilisation d’unité relative (ex : em, rem) plutôt qu’absolue (ex : px)	=> OUI, très majoritairement REM (ligne 222, 229, 230, 252 etc...) et %, px à de rares occasions

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+        name="description"
+        content="FakeSecurity, experts en sécurité et en arnaques en tous genres, venez magouiller chez nous."
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FakeSecurity <?= $pageTitle?></title>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+        type="text/css"
+    />
+    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/png"/>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+
+    <?php 
+
+        require 'src/templates/header.phtml';
+
+        // <main>
+        echo $pageContent;
+        // </main>
+
+        require 'src/templates/footer.phtml';
+
+        require 'src/templates/modals.phtml';
+
+    ?>
+
+    <script type="module" src="assets/js/main.js"></script>
+  </body>
+</html>

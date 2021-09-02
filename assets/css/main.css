@@ -1,0 +1,1501 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "comfortaa";
+  src: url("../fonts/comfortaa/static/Comfortaa-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "vt323";
+  src: url("../fonts/vt323/VT323-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+ul,
+strong,
+em,
+mark {
+  font-size: 62.5%;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "comfortaa";
+}
+
+p {
+  line-height: 1.4;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: lightgray;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(69, 53, 218, 0.8);
+}
+
+header {
+  background-color: rgba(231, 243, 254, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0.4rem;
+}
+header div {
+  height: 100%;
+  position: relative;
+}
+header div strong {
+  font-size: 1.8rem;
+  margin-left: 0.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(84, 170, 248, 0.8);
+}
+header div strong span {
+  color: rgba(37, 26, 143, 0.8);
+}
+header div img {
+  opacity: 0.9;
+}
+header div img:hover {
+  opacity: 1;
+  transition: 0.6s ease-in;
+}
+header a {
+  font-size: 1.2rem;
+}
+header nav {
+  width: 98%;
+  right: 2%;
+}
+header nav ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: column nowrap;
+}
+header nav ul li {
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  background-color: rgba(197, 226, 253, 0.8);
+  border-radius: 2rem;
+  margin-top: 0.4rem;
+}
+header nav ul li a {
+  display: block;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+header nav ul li a:hover {
+  background-color: rgba(69, 53, 218, 0.8);
+  color: white;
+  transition: 0.5s;
+}
+header nav ul li a:active {
+  text-decoration: underline;
+  transition: 0.2s;
+}
+header nav ul li:first-child {
+  background-color: rgba(69, 53, 218, 0.8);
+  color: white;
+  border-radius: 2rem;
+}
+
+/************************************************************************************
+************************** CHANGE THEME (javascript) ********************************
+*************************************************************************************/
+body {
+  background-color: white;
+  color: #222222;
+  transition: all 0.15s ease-out;
+}
+
+body.dark-theme {
+  background-color: #222222;
+}
+body.dark-theme .change-theme-btn {
+  color: #222222;
+}
+body.dark-theme h1,
+body.dark-theme h1 ~ p,
+body.dark-theme fieldset ~ p,
+body.dark-theme .button__text {
+  color: white;
+}
+
+.change-btn {
+  z-index: 2;
+  margin-top: 0.3rem;
+  padding: 0.1em 0.3em;
+  border: 0;
+  border-radius: 15px;
+  outline: 0;
+  color: white;
+  cursor: pointer;
+  transition: all 0.15s ease-out;
+  position: absolute;
+  right: 1%;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.change-btn::before,
+.change-btn::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #222222;
+  transition: all 0.15s ease-out;
+}
+
+.change-btn::after {
+  background-color: white;
+  left: 100%;
+}
+
+.change-btn:hover {
+  text-decoration: underline;
+}
+
+.dark-theme .change-btn {
+  color: #222222;
+}
+
+.dark-theme .change-btn::before {
+  left: -100%;
+}
+
+.dark-theme .change-btn::after {
+  left: 0;
+}
+
+/************************************************************************************
+********************************** HOMEPAGE.PHTML & COMMON **************************
+*************************************************************************************/
+main {
+  width: 84%;
+  margin: 0 auto;
+}
+main q {
+  margin: 0.7rem 0;
+  display: block;
+  font-style: italic;
+  text-align: center;
+}
+main q::before, main q::after {
+  content: ' " ';
+}
+main h1 {
+  margin: 3rem auto;
+  font-size: 3.5rem;
+  text-align: center;
+  font-family: "vt323";
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+main h1 + p {
+  margin-bottom: 0.5rem;
+}
+main article {
+  margin: 2.5rem 0;
+  background-color: rgba(197, 226, 253, 0.8);
+  border-radius: 2rem 0 2rem 0;
+}
+main article h2 {
+  font-size: 1.7rem;
+  letter-spacing: 0.1rem;
+  color: white;
+  background-color: rgba(69, 53, 218, 0.8);
+  border-radius: 2rem 0 2rem 0;
+  padding: 1rem;
+}
+main article h2:hover {
+  letter-spacing: 0.2rem;
+  background-color: rgba(37, 26, 143, 0.8);
+  transition: 0.5s;
+}
+main article p {
+  font-size: 1.1rem;
+  padding: 0.7rem 1rem 0.7rem 1rem;
+}
+main article p:last-child {
+  margin-bottom: 1.1rem;
+  padding-bottom: 1.4rem;
+}
+main article p a {
+  color: darkmagenta;
+  font-size: 1rem;
+  font-weight: bold;
+}
+main article p a:hover {
+  color: #f2784b;
+  text-decoration: underline;
+}
+main article ul {
+  font-size: 1.1rem;
+  list-style-type: initial;
+  margin-left: 20%;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.button {
+  padding-top: 2rem;
+  position: relative;
+  margin: 0 auto;
+  width: 20rem;
+}
+.button:hover .button__rect {
+  stroke-dasharray: 760;
+  stroke-width: 0.1rem;
+  stroke-dashoffset: 0;
+}
+.button__rect {
+  fill: transparent;
+  stroke: rgba(69, 53, 218, 0.8);
+  border-bottom: 5px solid rgba(69, 53, 218, 0.8);
+  transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+  stroke-dasharray: 140 540;
+  stroke-width: 0.5rem;
+  stroke-dashoffset: -474;
+}
+.button__text {
+  position: relative;
+  text-align: center;
+  font-size: 2rem;
+  line-height: 2rem;
+  letter-spacing: 0.5rem;
+  color: #222222;
+  top: -3rem;
+}
+
+/************************************************************************************
+************************************* SERVICES **************************************
+*************************************************************************************/
+main .data-flex article {
+  width: 100%;
+}
+main .data-flex article:nth-of-type(3) {
+  width: 100%;
+}
+
+/************************************************************************************
+************************************* QUALITY ***************************************
+*************************************************************************************/
+main article iframe {
+  width: 70%;
+  min-height: 20rem;
+  margin-left: 15%;
+  margin-bottom: 1rem;
+}
+
+/************************************************************************************
+****************************** INSCRIPTION & CONNEXION ******************************
+*************************************************************************************/
+main .data-flex {
+  position: relative;
+  left: -5%;
+  width: 110%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+main .data-flex article {
+  border-radius: 1.5rem 1.5rem 0.4rem 0.4rem;
+}
+main .data-flex article h2 {
+  border-radius: 1.5rem 1.5rem 0 0;
+  text-align: center;
+}
+main .data-flex article:nth-of-type(3) {
+  width: 100%;
+}
+main .data-flex article:nth-of-type(1), main .data-flex article:nth-of-type(2) {
+  margin-right: 3rem;
+}
+main .data-flex form {
+  background-color: rgba(197, 226, 253, 0.8);
+  border-radius: 0 0 1rem 1rem;
+}
+main .data-flex form fieldset {
+  width: 100%;
+  margin: 0;
+  background-color: transparent;
+}
+main .data-flex legend {
+  top: 0;
+  cursor: initial;
+}
+main .data-flex legend:hover {
+  background-color: rgba(84, 170, 248, 0.8);
+}
+main .data-flex .field {
+  display: flex;
+  flex-flow: row nowrap;
+}
+main .data-flex label {
+  width: 10rem;
+  position: relative;
+  top: 0.3rem;
+}
+main .data-flex input {
+  width: 17rem;
+  height: 1.2rem;
+}
+main .data-flex input[type=submit] {
+  height: initial;
+}
+
+/************************************************************************************
+**************************** NOTIFICATIONS MESSAGES *********************************
+*************************************************************************************/
+.success {
+  color: white;
+  border: 1px solid #00ff80;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  text-align: center;
+  font-weight: bold;
+  background: linear-gradient(-45deg, rgba(69, 53, 218, 0.8), #00ff80, rgba(84, 170, 248, 0.8), rgba(69, 53, 218, 0.8));
+  background-size: 400% 400%;
+  animation: notification 10s ease infinite;
+}
+
+.fail {
+  color: white;
+  border: 1px solid #ff003f;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  text-align: center;
+  font-weight: bold;
+  background: linear-gradient(-45deg, rgba(69, 53, 218, 0.8), #ff003f, rgba(84, 170, 248, 0.8), rgba(69, 53, 218, 0.8));
+  background-size: 400% 400%;
+  animation: notification 10s ease infinite;
+}
+
+@keyframes notification {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.error,
+.errors {
+  color: #ff003f;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 0.8rem;
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  top: -0.5rem;
+  text-align: center;
+}
+
+/************************************************************************************
+************************************** DEMAND ***************************************
+*************************************************************************************/
+main table caption::after,
+main .obligatory::after,
+main .optionnal::after {
+  content: "▲";
+  font-size: 1.2rem;
+  float: right;
+  margin-right: 1%;
+  transform: rotate(-90deg);
+}
+main p {
+  font-size: 1rem;
+}
+main form {
+  margin-bottom: 1rem;
+}
+main form fieldset {
+  margin: 1rem 0;
+  background-color: rgba(197, 226, 253, 0.8);
+  padding-top: 1.2rem;
+  border-radius: 0 0 1rem 1rem;
+}
+main form .obligatory::before {
+  content: "*";
+  float: left;
+  margin-left: 1%;
+}
+main form fieldset .field label {
+  display: inline-block;
+  width: 30%;
+}
+main form fieldset .field label[for=additionnal] {
+  width: 100%;
+}
+main form .last-fieldset input {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+main form .last-fieldset label {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.1rem;
+  text-align: left;
+}
+main form legend {
+  font-size: 1.4rem;
+  text-align: center;
+  position: relative;
+  top: 1.25rem;
+  background-color: rgba(84, 170, 248, 0.8);
+  display: block;
+  width: 100%;
+  height: 1.6rem;
+  padding: 0.5rem 0;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.15rem;
+  cursor: pointer;
+}
+main form legend:hover {
+  background-color: rgba(69, 53, 218, 0.8);
+  transition: 0.5s;
+}
+main form div {
+  width: 90%;
+  margin: 1rem auto;
+}
+main form textarea {
+  display: block;
+  width: 98%;
+  height: 8rem;
+  margin: 0.5rem auto;
+  padding: 0.4rem;
+  resize: none;
+}
+main form input[type=number] {
+  margin: 0 auto;
+  width: 5rem;
+}
+main form input[name=site] {
+  width: 10rem;
+}
+main form input[type=date] {
+  width: 25%;
+}
+main form input,
+main form label {
+  text-align: center;
+}
+main form label[for=additional] {
+  width: 100%;
+}
+main form button,
+main form input[type=submit] {
+  display: block;
+  background-color: rgba(69, 53, 218, 0.8);
+  color: white;
+  border-radius: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+main form button:hover,
+main form input[type=submit]:hover {
+  background-color: rgba(37, 26, 143, 0.8);
+  transition: 0.5s;
+}
+main form button:active,
+main form input[type=submit]:active {
+  box-shadow: inset 0 0 5px white, 0 0 10px white, inset 0 0 15px white, inset 0 0 20px white, inset 0 0 30px white, inset 0 0 40px white, inset 0 0 55px white, inset 0 0 75px white;
+  transition: 0.2s;
+}
+main form input[type=submit] {
+  width: initial;
+  margin: 0.5rem auto;
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+main form button {
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+main form .recommandations {
+  margin: 1rem 5%;
+}
+main form .recommandations::before {
+  content: "*";
+  font-size: 1.2rem;
+  position: relative;
+  top: 0.5rem;
+}
+
+.quotation {
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+}
+
+/************************************************************************************
+********************* TOGGLE (hide & show) FIELDSETS & TABLES ***********************
+*************************************************************************************/
+.hidden-field {
+  overflow: hidden;
+  border-radius: initial;
+}
+
+fieldset.hidden-field {
+  height: 2.6rem;
+}
+
+table.hidden-field tr {
+  display: none;
+}
+
+form fieldset:not(.hidden-field) legend::after,
+table:not(.hidden-field) caption::after {
+  transform: rotate(180deg);
+}
+
+/************************************************************************************
+********************************* ACCOUNT & MODIFY **********************************
+*************************************************************************************/
+form .edit .field label {
+  width: 40%;
+  text-align: left;
+}
+form .edit .field input {
+  width: 50%;
+}
+form input[type=submit] {
+  width: 30%;
+}
+form + div {
+  width: 100%;
+}
+
+/************************************************************************************
+************************************ BACKOFFICE *************************************
+*************************************************************************************/
+main h1 + p {
+  text-align: center;
+}
+main h1 + p a {
+  background-color: rgba(84, 170, 248, 0.8);
+  color: white;
+  border-radius: 1rem;
+  padding: 0.3rem 0.5rem;
+  font-weight: bold;
+  font-size: 0.7rem;
+}
+main h1 + p a:hover {
+  background-color: rgba(69, 53, 218, 0.8);
+  transition: 0.5s;
+}
+main table,
+main th,
+main td {
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: 1px solid #222222;
+  padding: 0.8rem 0.1rem;
+  vertical-align: middle;
+}
+main th:nth-of-type(1), main th:nth-of-type(2), main th:nth-of-type(4), main th:last-child,
+main td:nth-of-type(1),
+main td:nth-of-type(2),
+main td:nth-of-type(4),
+main td:last-child {
+  display: none;
+}
+main caption {
+  border-bottom: transparent;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: white;
+  background-color: rgba(69, 53, 218, 0.8);
+  padding: 0.6rem 0;
+  word-spacing: 3px;
+}
+main caption:hover {
+  cursor: pointer;
+  background-color: rgba(37, 26, 143, 0.8);
+}
+main table {
+  margin: 2rem auto;
+  width: 100%;
+}
+main table a {
+  font-size: 1rem;
+  display: block;
+  word-break: break-all;
+}
+main table a:hover {
+  color: #f2784b;
+}
+main table span {
+  border-radius: 1rem;
+  border: 1px solid #222222;
+  background-color: darkmagenta;
+  color: white;
+  font-size: 0.9rem;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+  word-break: initial;
+}
+main table span:hover {
+  background-color: #f2784b;
+}
+main table span:active {
+  box-shadow: inset 0 0 7px white;
+  transition: 0.2s;
+}
+main table th {
+  background-color: rgba(84, 170, 248, 0.8);
+  color: white;
+}
+main table tr:nth-of-type(even) {
+  background-color: rgba(197, 226, 253, 0.8);
+}
+main table tr:nth-of-type(odd) {
+  background-color: white;
+}
+main table td {
+  text-align: center;
+  line-height: 1.4;
+}
+main table td img {
+  height: 44px;
+  margin-bottom: -0.4rem;
+}
+main table td img:hover {
+  transform: scale(1.2);
+  transition: 0.4s;
+}
+main table td img:active {
+  transform: scale(1);
+  transition: 0.4s;
+}
+main table td img[src="assets/img/valid.png"] {
+  height: 38px;
+}
+
+/************************************************************************************
+*************************************** BONUS ***************************************
+*************************************************************************************/
+.api {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.api h1 {
+  margin: 0.3rem auto;
+}
+.api div {
+  height: 100vh;
+}
+.api article {
+  display: none;
+  z-index: 3;
+  background-color: rgba(69, 53, 218, 0.8);
+  width: 80%;
+  height: 80vh;
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.api article p {
+  color: white;
+  background-color: #222222;
+  width: 80%;
+  margin: 1rem auto;
+}
+.api article span {
+  color: #00ff80;
+  cursor: pointer;
+}
+.api div + p {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  transition: 0.5s;
+  background-color: RGBa(0, 0, 0, 0.8);
+  color: white;
+  cursor: pointer;
+}
+.api div + p q {
+  display: block;
+}
+
+footer {
+  background-color: rgba(231, 243, 254, 0.8);
+  padding: 1.5rem;
+  font-size: 1.6rem;
+}
+footer div {
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+footer div ul {
+  border-left: 2px solid #222222;
+  padding-left: 0.4rem;
+  width: 45%;
+  border-left: none;
+}
+footer div ul:first-child {
+  border-left: none;
+}
+footer div ul:nth-of-type(3) li:last-child:hover {
+  border-bottom: 1px solid transparent;
+}
+footer div ul:nth-of-type(3), footer div ul:nth-of-type(4) {
+  margin-top: 0.8rem;
+}
+footer div ul li {
+  line-height: 1.5;
+  cursor: pointer;
+  border: 1px solid transparent;
+  margin-left: 2rem;
+}
+footer div ul li:hover {
+  border-bottom: 1px solid #222222;
+}
+footer div ul li:first-child {
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+  cursor: initial;
+}
+footer div ul li:first-child:hover {
+  border-bottom: 1px solid transparent;
+}
+footer div ul li a {
+  display: block;
+  font-size: 16px;
+}
+footer div ul li a i {
+  padding-right: 0.2rem;
+}
+footer div ul a[href=demand] {
+  line-height: 2;
+  margin-top: 0.2rem;
+  padding: 0;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  background-color: rgba(69, 53, 218, 0.8);
+  border-radius: 25px;
+}
+footer div ul a[href=demand]:hover {
+  text-shadow: 0 0 5px rgba(231, 243, 254, 0.8), 0 0 10px rgba(231, 243, 254, 0.8), 0 0 15px rgba(231, 243, 254, 0.8), 0 0 20px rgba(231, 243, 254, 0.8), 0 0 30px rgba(231, 243, 254, 0.8), 0 0 40px rgba(231, 243, 254, 0.8), 0 0 55px rgba(231, 243, 254, 0.8), 0 0 75px rgba(231, 243, 254, 0.8);
+  transition: 0.4s;
+}
+footer div .fa-mobile-alt {
+  margin-left: 0.2rem;
+}
+footer span {
+  display: block;
+}
+footer span a {
+  display: block;
+  width: 7.5rem;
+  margin: 0 auto;
+}
+footer span a img {
+  display: block;
+  margin: 0.5rem auto 0 auto;
+}
+footer p {
+  text-align: center;
+}
+footer p i {
+  margin: 1rem 1.5rem;
+  width: 1.5rem;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+  color: white;
+  background-color: rgba(69, 53, 218, 0.8);
+  border-radius: 50%;
+}
+footer p i:hover {
+  transform: scale(1.2);
+  text-shadow: 0 0 5px rgba(231, 243, 254, 0.8), 0 0 10px rgba(231, 243, 254, 0.8), 0 0 15px rgba(231, 243, 254, 0.8), 0 0 20px rgba(231, 243, 254, 0.8), 0 0 30px rgba(231, 243, 254, 0.8), 0 0 40px rgba(231, 243, 254, 0.8), 0 0 55px rgba(231, 243, 254, 0.8), 0 0 75px rgba(231, 243, 254, 0.8);
+  transition: 0.4s;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal div {
+  width: 65%;
+  height: 70vh;
+  background-color: rgba(231, 243, 254, 0.8);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-bottom: 0.3rem;
+  overflow: auto;
+}
+.modal div i {
+  position: relative;
+  left: 96%;
+}
+.modal div i:hover {
+  cursor: pointer;
+}
+.modal div i:active {
+  transform: scale(0.8);
+}
+.modal div i:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.modal div h3 {
+  font-size: 1.5rem;
+  color: darkmagenta;
+  text-align: center;
+  padding: 0.5rem;
+  width: 80%;
+  margin: 0 auto;
+}
+.modal div h3::before {
+  content: "☛";
+}
+.modal div h3::after {
+  content: "☚";
+}
+.modal div h3::after, .modal div h3::before {
+  margin: 0 1rem;
+}
+.modal div h4 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  width: 95%;
+  margin: 0.4rem auto;
+  padding: 0.3rem;
+  border: 1px solid rgba(69, 53, 218, 0.8);
+  color: rgba(69, 53, 218, 0.8);
+}
+.modal div li,
+.modal div p {
+  font-size: 0.95rem;
+}
+.modal div span,
+.modal div p {
+  margin: 0.4rem 0.8rem 0.7rem 0.8rem;
+}
+.modal div li {
+  margin-left: 10%;
+  margin-top: 0.3rem;
+  list-style-type: decimal;
+}
+.modal div q {
+  font-style: italic;
+}
+.modal div q::after, .modal div q::before {
+  content: '"';
+}
+.modal div a {
+  display: block;
+  max-width: 200px;
+  margin: 0 auto 1.4rem auto;
+}
+
+/************************************************************************************
+********************************** ULTRA SMALL PHONE ********************************
+*************************************************************************************/
+@media screen and (max-width: 408px) {
+  header div {
+    height: 3rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+    left: initial;
+  }
+  header div img {
+    display: none;
+  }
+  header div a,
+header div strong {
+    display: block;
+    width: 100%;
+  }
+
+  main form legend {
+    font-size: 1.2rem;
+  }
+
+  body main .data-flex form fieldset {
+    width: 95%;
+    padding: 0.8rem;
+  }
+  body main .data-flex form fieldset label {
+    text-align: left;
+  }
+
+  main table:nth-of-type(1) th:nth-of-type(8),
+main table:nth-of-type(1) td:nth-of-type(8) {
+    display: none;
+  }
+
+  body footer div {
+    width: 80%;
+  }
+}
+/************************************************************************************
+********************************* VERY SMALL PHONE **********************************
+*************************************************************************************/
+@media screen and (max-width: 427px) {
+  main {
+    overflow: hidden;
+  }
+  main .button {
+    margin-left: -0.5rem;
+  }
+  main form textarea {
+    width: 96%;
+  }
+  main article ul {
+    margin-left: 10%;
+  }
+
+  .api article p {
+    font-size: 0.9rem;
+  }
+
+  .modal div {
+    width: 90%;
+  }
+  .modal div h3 {
+    font-size: 1.2rem;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .modal div h3::after, .modal div h3::before {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .modal div h4 {
+    width: 90%;
+  }
+}
+/************************************************************************************
+************************************ SMALL PHONE ************************************
+*************************************************************************************/
+@media screen and (max-width: 520px) {
+  header div {
+    left: -15%;
+  }
+
+  main .data-flex form input {
+    width: 70%;
+  }
+  main form fieldset .field {
+    position: relative;
+  }
+  main form fieldset .field label,
+main form fieldset .field input {
+    display: block;
+    margin: 0 auto;
+  }
+  main form fieldset .field label {
+    width: 100%;
+    text-align: center;
+  }
+  main form fieldset .field input[type=date] {
+    width: 50%;
+  }
+  main form fieldset .field select {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  main form .edit .field input {
+    margin: 0 auto;
+  }
+  main form .edit .field label {
+    width: 100%;
+    text-align: center;
+  }
+  main th:nth-of-type(5),
+main td:nth-of-type(5) {
+    display: none;
+  }
+
+  .api div + p {
+    padding: 1.5rem;
+    font-size: 1.3rem;
+  }
+  .api div + p q {
+    display: block;
+  }
+
+  footer {
+    padding-top: 0rem;
+    text-align: center;
+  }
+  footer div {
+    flex-flow: row wrap;
+    width: 60%;
+  }
+  footer div ul {
+    width: 100%;
+    margin-top: 1rem;
+    padding-left: 0;
+  }
+  footer div ul li {
+    margin-left: 0;
+  }
+  footer div ul li:nth-child(1) {
+    border-top: 2px solid #222222;
+    padding-top: 0.4rem;
+    margin-top: 1rem;
+  }
+  footer div ul:nth-of-type(1) li:nth-of-type(1) {
+    border-top: none;
+  }
+
+  .modal div i {
+    left: 94%;
+  }
+}
+/************************************************************************************
+************************************ NORMAL PHONE ***********************************
+*************************************************************************************/
+/************************************************************************************
+************************************** TABLET ***************************************
+*************************************************************************************/
+@media screen and (min-width: 786px) {
+  header {
+    flex-flow: column;
+    padding-bottom: 0.5rem;
+  }
+  header nav {
+    position: initial;
+    width: 98%;
+  }
+  header nav ul {
+    flex-flow: row wrap;
+  }
+  header nav ul li:first-child {
+    width: 100%;
+  }
+  header nav ul li:first-child:hover {
+    transform: none;
+    transition: none;
+  }
+  header nav ul li:first-child a:hover {
+    transform: none;
+    transition: none;
+  }
+  header nav ul li {
+    width: 45%;
+    margin-top: 0.4rem;
+    background-color: transparent;
+  }
+
+  main .data-flex {
+    flex-flow: column wrap;
+  }
+  main .data-flex article {
+    width: 70%;
+  }
+  main .data-flex article:nth-of-type(1), main .data-flex article:nth-of-type(2) {
+    margin: 0 auto;
+  }
+  main .data-flex article:nth-of-type(2) {
+    margin-top: 2rem;
+  }
+  main .data-flex article:nth-of-type(3) {
+    width: 70%;
+    margin: 0 auto 2rem auto;
+  }
+  main form label {
+    margin-bottom: 0.1rem;
+  }
+  main form label {
+    width: 40%;
+  }
+  main form label,
+main form input {
+    display: inline-block;
+    text-align: left;
+  }
+  main form p {
+    line-height: 1.2;
+  }
+  main form .last-fieldset input {
+    width: 98%;
+  }
+  main .data-flex .field {
+    justify-content: center;
+  }
+  main th:nth-of-type(1), main th:nth-of-type(3), main th:nth-of-type(4), main th:last-child,
+main td:nth-of-type(1),
+main td:nth-of-type(3),
+main td:nth-of-type(4),
+main td:last-child {
+    display: table-cell;
+  }
+}
+/************************************************************************************
+************************************** DESKTOP **************************************
+*************************************************************************************/
+@media screen and (min-width: 970px) {
+  .error,
+.errors {
+    text-align: initial;
+  }
+
+  header {
+    flex-flow: row nowrap;
+    padding-bottom: initial;
+  }
+  header div {
+    left: 0.5rem;
+  }
+  header nav {
+    position: absolute;
+    right: 9%;
+    width: 55%;
+  }
+  header nav ul {
+    flex-flow: row nowrap;
+  }
+  header nav ul li {
+    background-color: transparent;
+    width: initial;
+    margin-top: 0;
+  }
+  header nav ul li:first-child {
+    background-color: rgba(69, 53, 218, 0.8);
+    color: white;
+    border-radius: 2rem;
+  }
+  header nav ul li:first-child:hover {
+    transform: scale(1.2);
+    font-size: 1.8rem;
+    border-radius: 2rem;
+    background-color: rgba(37, 26, 143, 0.8);
+    transition: 0.5s;
+  }
+  header nav ul li:first-child:active {
+    transform: scale(1);
+    font-size: 1.6rem;
+    transition: 0.2s;
+  }
+  header nav ul li:first-child a:hover {
+    background-color: rgba(37, 26, 143, 0.8);
+    transition: 0.5s;
+  }
+  header nav ul li:first-child a:active {
+    text-decoration: none;
+  }
+
+  main .data-flex {
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+  }
+  main .data-flex article {
+    width: 40%;
+  }
+  main .data-flex article:nth-of-type(1), main .data-flex article:nth-of-type(2) {
+    margin: 0 auto;
+  }
+  main .data-flex article:nth-of-type(3) {
+    width: 75%;
+  }
+  main form fieldset .field label,
+main form fieldset .field input {
+    display: inline-block;
+  }
+  main form fieldset .field label {
+    width: 25%;
+    text-align: left;
+  }
+  main form .last-fieldset .field input {
+    width: 45%;
+  }
+  main form .last-fieldset .field label {
+    width: 25%;
+  }
+  main form .last-fieldset .field input,
+main form .last-fieldset .field label {
+    display: inline-block;
+    text-align: left;
+  }
+  main th,
+main td {
+    font-size: 0.9rem;
+    padding: 0.8rem 0.3rem;
+  }
+  main th:nth-of-type(2),
+main td:nth-of-type(2) {
+    display: table-cell;
+  }
+  main article iframe {
+    width: 70%;
+    min-height: 30rem;
+    margin-left: 15%;
+    margin-bottom: 1rem;
+  }
+  main .data-flex form {
+    width: 40%;
+  }
+  main .data-flex form fieldset .field label {
+    width: 40%;
+  }
+
+  footer div {
+    justify-content: space-evenly;
+  }
+  footer div ul {
+    width: auto;
+    border-left: 2px solid #222222;
+    padding-left: 0.4rem;
+  }
+  footer div ul li {
+    margin-left: 0;
+  }
+  footer div ul:nth-of-type(3), footer div ul:nth-of-type(4) {
+    margin-top: 0;
+  }
+
+  .modal div i {
+    left: 98.2%;
+  }
+}
+@media screen and (min-width: 1033px) {
+  header nav {
+    right: 5%;
+  }
+
+  main form label {
+    width: 30%;
+  }
+  main table,
+main th,
+main td {
+    font-size: 1rem;
+    padding: 0.8rem 0.5rem;
+  }
+}
+@media screen and (min-width: 1080px) {
+  header nav {
+    right: 1.5%;
+  }
+  header nav ul li:first-child {
+    width: auto;
+  }
+
+  main form fieldset label {
+    width: 30%;
+    text-align: left;
+  }
+  main form .edit .field input {
+    margin: 0 auto;
+  }
+  main form .edit .field label {
+    width: 35%;
+  }
+  main .data-flex article:nth-of-type(1),
+main .data-flex article:nth-of-type(2) {
+    width: 45%;
+  }
+  main .data-flex article:nth-of-type(3) {
+    width: 85%;
+  }
+
+  /* Bonus */
+  .api div img {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,1925 @@
+$main-color: rgba(231, 243, 254, 0.8);
+$secondary-color: rgba(69, 53, 218, 0.8);
+$dark-main-color: darken($main-color, 7%);
+$darker-main-color: darken($main-color, 30%);
+$dark-secondary-color: darken($secondary-color, 20%);
+
+$link-color: rgba(139, 0, 139, 1);
+$link-hover-color: rgba(242, 120, 75, 1);
+
+$success: rgba(0, 255, 128, 1);
+$fail: rgba(255, 0, 63, 1);
+
+$light: rgba(255, 255, 255, 1);
+$dark: rgba(34, 34, 34, 1);
+
+// All document
+@font-face {
+  font-family: "comfortaa";
+  src: url("../fonts/comfortaa/static/Comfortaa-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Used for titles <h1> only
+@font-face {
+  font-family: "vt323";
+  src: url("../fonts/vt323/VT323-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+// ***************************************************************************************************************************************** \\
+// ************************************************************ NORMALIZE  ***************************************************************** \\
+// ***************************************************************************************************************************************** \\
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+ul,
+strong,
+em,
+mark {
+  font-size: 62.5%;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "comfortaa";
+}
+
+p {
+  line-height: 1.4;
+}
+
+// Scroll bar style
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $light;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(211, 211, 211);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: $secondary-color;
+}
+
+// ***************************************************************************************************************************************** \\
+// ************************************************************** HEADER  ****************************************************************** \\
+// ***************************************************************************************************************************************** \\
+header {
+  background-color: $main-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0.4rem;
+
+  div {
+    height: 100%;
+    position: relative;
+
+    strong {
+      font-size: 1.8rem;
+      margin-left: 0.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $darker-main-color;
+
+      span {
+        color: $dark-secondary-color;
+      }
+    }
+
+    img {
+      opacity: 0.9;
+
+      &:hover {
+        opacity: 1;
+        transition: 0.6s ease-in;
+      }
+    }
+  }
+
+  a {
+    font-size: 1.2rem;
+  }
+
+  nav {
+    width: 98%;
+    right: 2%;
+
+    ul {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-flow: column nowrap;
+
+      li {
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        background-color: $dark-main-color;
+        border-radius: 2rem;
+        margin-top: 0.4rem;
+
+        a {
+          display: block;
+          padding: 1rem;
+          border-radius: 2rem;
+
+          &:hover {
+            background-color: $secondary-color;
+            color: $light;
+            transition: 0.5s;
+          }
+
+          &:active {
+            text-decoration: underline;
+            transition: 0.2s;
+          }
+        }
+
+        &:first-child {
+          background-color: $secondary-color;
+          color: $light;
+          border-radius: 2rem;
+        }
+      }
+    }
+  }
+}
+
+/************************************************************************************
+************************** CHANGE THEME (javascript) ********************************
+*************************************************************************************/
+body {
+  background-color: $light;
+  color: $dark;
+  transition: all 0.15s ease-out;
+}
+
+body.dark-theme {
+  background-color: $dark;
+
+  .change-theme-btn {
+    color: $dark;
+  }
+
+  h1,
+  h1 ~ p,
+  fieldset ~ p,
+  .button__text {
+    color: $light;
+  }
+}
+
+.change-btn {
+  z-index: 2;
+  margin-top: 0.3rem;
+  padding: 0.1em 0.3em;
+  border: 0;
+  border-radius: 15px;
+  outline: 0;
+  color: $light;
+  cursor: pointer;
+  transition: all 0.15s ease-out;
+  position: absolute;
+  right: 1%;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.change-btn::before,
+.change-btn::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $dark;
+  transition: all 0.15s ease-out;
+}
+
+.change-btn::after {
+  background-color: $light;
+  left: 100%;
+}
+
+.change-btn:hover {
+  text-decoration: underline;
+}
+
+.dark-theme .change-btn {
+  color: $dark;
+}
+
+.dark-theme .change-btn::before {
+  left: -100%;
+}
+
+.dark-theme .change-btn::after {
+  left: 0;
+}
+
+// ***************************************************************************************************************************************** \\
+// **************************************************************** MAIN  ******************************************************************* \\
+// ***************************************************************************************************************************************** \\
+
+/************************************************************************************
+********************************** HOMEPAGE.PHTML & COMMON **************************
+*************************************************************************************/
+
+main {
+  width: 84%;
+  margin: 0 auto;
+
+  q {
+    margin: 0.7rem 0;
+    display: block;
+    font-style: italic;
+    text-align: center;
+
+    &::before,
+    &::after {
+      content: ' " ';
+    }
+  }
+
+  h1 {
+    margin: 3rem auto;
+    font-size: 3.5rem;
+    text-align: center;
+    font-family: "vt323";
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  h1 + p {
+    margin-bottom: 0.5rem;
+  }
+
+  article {
+    margin: 2.5rem 0;
+    background-color: $dark-main-color;
+    border-radius: 2rem 0 2rem 0;
+
+    h2 {
+      font-size: 1.7rem;
+      letter-spacing: 0.1rem;
+      color: $light;
+      background-color: $secondary-color;
+      border-radius: 2rem 0 2rem 0;
+      padding: 1rem;
+
+      &:hover {
+        letter-spacing: 0.2rem;
+        background-color: $dark-secondary-color;
+        transition: 0.5s;
+      }
+    }
+
+    p {
+      font-size: 1.1rem;
+      padding: 0.7rem 1rem 0.7rem 1rem;
+
+      &:last-child {
+        margin-bottom: 1.1rem;
+        padding-bottom: 1.4rem;
+      }
+
+      a {
+        color: $link-color;
+        font-size: 1rem;
+        font-weight: bold;
+
+        &:hover {
+          color: $link-hover-color;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    ul {
+      font-size: 1.1rem;
+      list-style-type: initial;
+      margin-left: 20%;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+  }
+}
+
+// ===================================================== \\
+//     Button "GO DEVIS"   (For HOMEPAGE & SERVICES)     \\
+//                    BEM Nomenclature                   \\
+// ===================================================== \\
+@mixin dash($array, $offset, $width) {
+  stroke-dasharray: $array;
+  stroke-width: $width;
+  stroke-dashoffset: $offset;
+}
+
+.button {
+  padding-top: 2rem;
+  position: relative;
+  margin: 0 auto;
+  width: 20rem;
+
+  &:hover &__rect {
+    @include dash(760, 0, 0.1rem);
+  }
+
+  &__rect {
+    fill: transparent;
+    stroke: $secondary-color;
+    border-bottom: 5px solid $secondary-color;
+
+    transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+    @include dash(140 540, -474, 0.5rem);
+  }
+
+  &__text {
+    position: relative;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 2rem;
+    letter-spacing: 0.5rem;
+    color: $dark;
+    top: -3rem;
+  }
+}
+
+/************************************************************************************
+************************************* SERVICES **************************************
+*************************************************************************************/
+main .data-flex article {
+  width: 100%;
+
+  &:nth-of-type(3) {
+    width: 100%;
+  }
+}
+
+/************************************************************************************
+************************************* QUALITY ***************************************
+*************************************************************************************/
+main {
+  article {
+    iframe {
+      width: 70%;
+      min-height: 20rem;
+      margin-left: 15%;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+/************************************************************************************
+****************************** INSCRIPTION & CONNEXION ******************************
+*************************************************************************************/
+main {
+  .data-flex {
+    position: relative;
+    left: -5%;
+    width: 110%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+
+    article {
+      border-radius: 1.5rem 1.5rem 0.4rem 0.4rem;
+
+      h2 {
+        border-radius: 1.5rem 1.5rem 0 0;
+        text-align: center;
+      }
+
+      &:nth-of-type(3) {
+        width: 100%;
+      }
+
+      &:nth-of-type(1),
+      &:nth-of-type(2) {
+        margin-right: 3rem;
+      }
+    }
+
+    form {
+      background-color: $dark-main-color;
+      border-radius: 0 0 1rem 1rem;
+      // Prevent growing of element when an error message pop
+      // flex-basis: 0;
+      // flex-grow: 0;
+      // width: 45%;
+
+      fieldset {
+        width: 100%;
+        margin: 0;
+        background-color: transparent;
+      }
+    }
+
+    legend {
+      top: 0;
+      cursor: initial;
+
+      &:hover {
+        background-color: $darker-main-color;
+      }
+    }
+
+    .field {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+
+    label {
+      width: 10rem;
+      position: relative;
+      top: 0.3rem;
+    }
+
+    input {
+      width: 17rem;
+      height: 1.2rem;
+    }
+
+    input[type="submit"] {
+      height: initial;
+    }
+  }
+}
+
+/************************************************************************************
+**************************** NOTIFICATIONS MESSAGES *********************************
+*************************************************************************************/
+// ==========  For CONNEXION - SUBSCRIBE - ORDER - SANCTION  ========== \\
+
+// Success message when user subscribe (or add an order or sanction for admin)
+.success {
+  color: $light;
+  border: 1px solid $success;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  text-align: center;
+  font-weight: bold;
+  background: linear-gradient(
+    -45deg,
+    $secondary-color,
+    $success,
+    $darker-main-color,
+    $secondary-color
+  );
+  background-size: 400% 400%;
+  animation: notification 10s ease infinite;
+}
+
+// Fail message when someone try to access another member page profil or admin pages
+.fail {
+  color: $light;
+  border: 1px solid $fail;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  text-align: center;
+  font-weight: bold;
+  background: linear-gradient(
+    -45deg,
+    $secondary-color,
+    $fail,
+    $darker-main-color,
+    $secondary-color
+  );
+  background-size: 400% 400%;
+  animation: notification 10s ease infinite;
+}
+
+// Same animation for .success and .fail
+@keyframes notification {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// ================== Form notifications when input/select is incorrect ================== \\
+// .error = Style for error message (displayed in JS) assets/js/class/Statement.js
+// .errors = Style for error message (displayed in php)
+// Warning : there is a reason to make two class here (javascript create a <p class="error"> only if there is no <p class="error"> already displayed)
+// php errors comes only if everything was ok in javascript (or if javascript is not active)
+.error,
+.errors {
+  color: $fail;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 0.8rem;
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  top: -0.5rem;
+  text-align: center;
+}
+
+/************************************************************************************
+************************************** DEMAND ***************************************
+*************************************************************************************/
+main {
+  table caption,
+  .obligatory,
+  .optionnal {
+    &::after {
+      content: "▲";
+      font-size: 1.2rem;
+      float: right;
+      margin-right: 1%;
+      transform: rotate(-90deg);
+    }
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  form {
+    margin-bottom: 1rem;
+
+    fieldset {
+      margin: 1rem 0;
+      background-color: $dark-main-color;
+      padding-top: 1.2rem;
+      border-radius: 0 0 1rem 1rem;
+    }
+
+    .obligatory::before {
+      content: "*";
+      float: left;
+      margin-left: 1%;
+    }
+
+    fieldset .field {
+      label {
+        display: inline-block;
+        width: 30%;
+      }
+
+      label[for="additionnal"] {
+        width: 100%;
+      }
+    }
+
+    .last-fieldset {
+      input {
+        display: block;
+        width: 100%;
+        text-align: left;
+      }
+
+      label {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.1rem;
+        text-align: left;
+      }
+    }
+
+    legend {
+      font-size: 1.4rem;
+      text-align: center;
+      position: relative;
+      top: 1.25rem;
+      background-color: $darker-main-color;
+      display: block;
+      width: 100%;
+      height: 1.6rem;
+      padding: 0.5rem 0;
+      color: $light;
+      font-weight: bold;
+      letter-spacing: 0.15rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $secondary-color;
+        transition: 0.5s;
+      }
+    }
+
+    div {
+      width: 90%;
+      margin: 1rem auto;
+    }
+
+    textarea {
+      display: block;
+      width: 98%;
+      height: 8rem;
+      margin: 0.5rem auto;
+      padding: 0.4rem;
+      resize: none;
+    }
+
+    input[type="number"] {
+      margin: 0 auto;
+      width: 5rem;
+    }
+
+    input[name="site"] {
+      width: 10rem;
+    }
+
+    input[type="date"] {
+      width: 25%;
+    }
+
+    input,
+    label {
+      text-align: center;
+    }
+
+    label[for="additional"] {
+      width: 100%;
+    }
+
+    button,
+    input[type="submit"] {
+      display: block;
+      background-color: $secondary-color;
+      color: $light;
+      border-radius: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      border: 1px solid transparent;
+
+      &:hover {
+        background-color: $dark-secondary-color;
+        transition: 0.5s;
+      }
+
+      &:active {
+        box-shadow: inset 0 0 5px $light, 0 0 10px $light, inset 0 0 15px $light,
+          inset 0 0 20px $light, inset 0 0 30px $light, inset 0 0 40px $light,
+          inset 0 0 55px $light, inset 0 0 75px $light;
+        transition: 0.2s;
+      }
+    }
+
+    input[type="submit"] {
+      width: initial;
+      margin: 0.5rem auto;
+      padding: 0.8rem;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    button {
+      margin: 0 auto;
+      padding: 0.5rem;
+    }
+
+    .recommandations {
+      margin: 1rem 5%;
+
+      &::before {
+        content: "*";
+        font-size: 1.2rem;
+        position: relative;
+        top: 0.5rem;
+      }
+    }
+  }
+}
+
+.quotation {
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+}
+
+/************************************************************************************
+********************* TOGGLE (hide & show) FIELDSETS & TABLES ***********************
+*************************************************************************************/
+// * Toggle field Class (<form> and <table>)  => JS toggleField() in assets/js/class/Toggle.js;
+.hidden-field {
+  overflow: hidden;
+  border-radius: initial;
+}
+
+fieldset.hidden-field {
+  height: 2.6rem;
+}
+
+table.hidden-field tr {
+  display: none;
+}
+
+// * Icon "arrow" on the right to show element that can toggle
+form fieldset:not(.hidden-field) legend::after,
+table:not(.hidden-field) caption::after {
+  transform: rotate(180deg);
+}
+
+/************************************************************************************
+********************************* ACCOUNT & MODIFY **********************************
+*************************************************************************************/
+form {
+  .edit {
+    .field {
+      label {
+        width: 40%;
+        text-align: left;
+      }
+
+      input {
+        width: 50%;
+      }
+    }
+  }
+
+  input[type="submit"] {
+    width: 30%;
+  }
+
+  + div {
+    width: 100%;
+  }
+}
+
+/************************************************************************************
+************************************ BACKOFFICE *************************************
+*************************************************************************************/
+main {
+  h1 + p {
+    text-align: center;
+
+    a {
+      background-color: $darker-main-color;
+      color: $light;
+      border-radius: 1rem;
+      padding: 0.3rem 0.5rem;
+      font-weight: bold;
+      font-size: 0.7rem;
+
+      &:hover {
+        background-color: $secondary-color;
+        transition: 0.5s;
+      }
+    }
+  }
+
+  table,
+  th,
+  td {
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid $dark;
+    padding: 0.8rem 0.1rem;
+    vertical-align: middle;
+  }
+
+  th,
+  td {
+    &:nth-of-type(1),
+    &:nth-of-type(2),
+    &:nth-of-type(4),
+    &:last-child {
+      display: none;
+    }
+  }
+
+  caption {
+    border-bottom: transparent;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: $light;
+    background-color: $secondary-color;
+    padding: 0.6rem 0;
+    word-spacing: 3px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $dark-secondary-color;
+    }
+  }
+
+  table {
+    margin: 2rem auto;
+    width: 100%;
+
+    a {
+      font-size: 1rem;
+      display: block;
+      word-break: break-all;
+
+      &:hover {
+        color: $link-hover-color;
+      }
+    }
+    // button
+    span {
+      border-radius: 1rem;
+      border: 1px solid $dark;
+      background-color: $link-color;
+      color: $light;
+      font-size: 0.9rem;
+      padding: 0.2rem 0.4rem;
+      cursor: pointer;
+      word-break: initial;
+
+      &:hover {
+        background-color: $link-hover-color;
+      }
+
+      &:active {
+        box-shadow: inset 0 0 7px $light;
+        transition: 0.2s;
+      }
+    }
+
+    th {
+      background-color: $darker-main-color;
+      color: $light;
+    }
+
+    tr:nth-of-type(even) {
+      background-color: $dark-main-color;
+    }
+
+    tr:nth-of-type(odd) {
+      background-color: $light;
+    }
+
+    td {
+      text-align: center;
+      line-height: 1.4;
+
+      img {
+        height: 44px;
+        margin-bottom: -0.4rem;
+
+        &:hover {
+          transform: scale(1.2);
+          transition: 0.4s;
+        }
+
+        &:active {
+          transform: scale(1);
+          transition: 0.4s;
+        }
+
+        &[src="assets/img/valid.png"] {
+          height: 38px;
+        }
+      }
+    }
+  }
+}
+
+/************************************************************************************
+*************************************** BONUS ***************************************
+*************************************************************************************/
+.api {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  h1 {
+    margin: 0.3rem auto;
+  }
+
+  // Pictures
+  div {
+    height: 100vh;
+  }
+
+  article {
+    display: none;
+    z-index: 3;
+    background-color: $secondary-color;
+    width: 80%;
+    height: 80vh;
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    // Information message
+    p {
+      color: $light;
+      background-color: $dark;
+      width: 80%;
+      margin: 1rem auto;
+    }
+
+    span {
+      color: $success;
+      cursor: pointer;
+    }
+  }
+
+  // Quote
+  div + p {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    transition: 0.5s;
+    background-color: RGBa(0, 0, 0, 0.8);
+    color: $light;
+    cursor: pointer;
+
+    q {
+      display: block;
+    }
+  }
+}
+
+// ******************************************************************************************************************************************* \\
+// *************************************************************** FOOTER ******************************************************************** \\
+// ******************************************************************************************************************************************* \\
+footer {
+  background-color: $main-color;
+  padding: 1.5rem;
+  font-size: 1.6rem;
+
+  div {
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+
+    ul {
+      border-left: 2px solid $dark;
+      padding-left: 0.4rem;
+      width: 45%;
+      border-left: none;
+
+      &:first-child {
+        border-left: none;
+      }
+
+      &:nth-of-type(3) li:last-child:hover {
+        border-bottom: 1px solid transparent;
+      }
+
+      &:nth-of-type(3),
+      &:nth-of-type(4) {
+        margin-top: 0.8rem;
+      }
+
+      li {
+        line-height: 1.5;
+        cursor: pointer;
+        border: 1px solid transparent;
+        margin-left: 2rem;
+
+        &:hover {
+          border-bottom: 1px solid $dark;
+        }
+
+        &:first-child {
+          font-weight: bold;
+          padding-bottom: 0.5rem;
+          cursor: initial;
+
+          &:hover {
+            border-bottom: 1px solid transparent;
+          }
+        }
+
+        a {
+          display: block;
+          font-size: 16px;
+
+          i {
+            padding-right: 0.2rem;
+          }
+        }
+      }
+
+      a[href="demand"] {
+        line-height: 2;
+        margin-top: 0.2rem;
+        padding: 0;
+        font-weight: bold;
+        color: $light;
+        text-align: center;
+        background-color: $secondary-color;
+        border-radius: 25px;
+
+        &:hover {
+          text-shadow: 0 0 5px $main-color, 0 0 10px $main-color,
+            0 0 15px $main-color, 0 0 20px $main-color, 0 0 30px $main-color,
+            0 0 40px $main-color, 0 0 55px $main-color, 0 0 75px $main-color;
+          transition: 0.4s;
+        }
+      }
+    }
+
+    // Font awesome
+    .fa-mobile-alt {
+      margin-left: 0.2rem;
+    }
+  }
+
+  // Logo
+  span {
+    display: block;
+
+    a {
+      display: block;
+      width: 7.5rem;
+      margin: 0 auto;
+
+      img {
+        display: block;
+        margin: 0.5rem auto 0 auto;
+      }
+    }
+  }
+
+  p {
+    text-align: center;
+
+    i {
+      margin: 1rem 1.5rem;
+      width: 1.5rem;
+      padding: 0.5rem;
+      font-size: 1.6rem;
+      color: $light;
+      background-color: $secondary-color;
+      border-radius: 50%;
+
+      &:hover {
+        transform: scale(1.2);
+        text-shadow: 0 0 5px $main-color, 0 0 10px $main-color,
+          0 0 15px $main-color, 0 0 20px $main-color, 0 0 30px $main-color,
+          0 0 40px $main-color, 0 0 55px $main-color, 0 0 75px $main-color;
+        transition: 0.4s;
+      }
+    }
+  }
+}
+
+// ********************************************************************************************************************************************** \\
+// *************************************************************** MODALS *********************************************************************** \\
+// ********************************************************************************************************************************************** \\
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  div {
+    width: 65%;
+    height: 70vh;
+    background-color: $main-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 0.3rem;
+    overflow: auto;
+
+    i {
+      position: relative;
+      left: 96%;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:active {
+        transform: scale(0.8);
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: $link-color;
+      text-align: center;
+      padding: 0.5rem;
+      width: 80%;
+      margin: 0 auto;
+
+      &::before {
+        content: "\261B";
+      }
+
+      &::after {
+        content: "\261A";
+      }
+
+      &::after,
+      &::before {
+        margin: 0 1rem;
+      }
+    }
+
+    h4 {
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-align: center;
+      width: 95%;
+      margin: 0.4rem auto;
+      padding: 0.3rem;
+      border: 1px solid $secondary-color;
+      color: $secondary-color;
+    }
+
+    li,
+    p {
+      font-size: 0.95rem;
+    }
+
+    span,
+    p {
+      margin: 0.4rem 0.8rem 0.7rem 0.8rem;
+    }
+
+    li {
+      margin-left: 10%;
+      margin-top: 0.3rem;
+      list-style-type: decimal;
+    }
+
+    q {
+      font-style: italic;
+
+      &::after,
+      &::before {
+        content: '"';
+      }
+    }
+
+    a {
+      display: block;
+      max-width: 200px;
+      margin: 0 auto 1.4rem auto;
+    }
+  }
+}
+
+// ***************************************************************************************************************************************** \\
+// ************************************************************ RESPONSIVE  **************************************************************** \\
+// ***************************************************************************************************************************************** \\
+
+/************************************************************************************
+********************************** ULTRA SMALL PHONE ********************************
+*************************************************************************************/
+@media screen and(max-width: 408px) {
+  // == HEADER
+  header {
+    div {
+      height: 3rem;
+      display: block;
+      width: 100%;
+      text-align: center;
+      left: initial;
+
+      img {
+        display: none;
+      }
+
+      a,
+      strong {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+
+  // == MAIN * DEMAND
+  main form legend {
+    font-size: 1.2rem;
+  }
+
+  // == MAIN * SUBSCRIBE & CONNEXION
+  body main .data-flex form fieldset {
+    width: 95%;
+    padding: 0.8rem;
+
+    label {
+      text-align: left;
+    }
+  }
+
+  // == MAIN * BACKOFFICE
+  main table:nth-of-type(1) th:nth-of-type(8),
+  main table:nth-of-type(1) td:nth-of-type(8) {
+    display: none;
+  }
+
+  // == FOOTER
+  body footer {
+    div {
+      width: 80%;
+    }
+  }
+}
+
+/************************************************************************************
+********************************* VERY SMALL PHONE **********************************
+*************************************************************************************/
+@media screen and(max-width: 427px) {
+  // == MAIN
+  main {
+    overflow: hidden;
+
+    // * HOMEPAGE
+    .button {
+      margin-left: -0.5rem;
+    }
+
+    // * DEMAND
+    form {
+      textarea {
+        width: 96%;
+      }
+    }
+
+    // * RULES
+    article {
+      ul {
+        margin-left: 10%;
+      }
+    }
+  }
+
+  // == MAIN * BONUS
+  .api {
+    article p {
+      font-size: 0.9rem;
+    }
+  }
+
+  // == MODALS
+  .modal {
+    div {
+      width: 90%;
+      h3 {
+        font-size: 1.2rem;
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+        margin-right: 0;
+        margin-left: 0;
+
+        &::after,
+        &::before {
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+      h4 {
+        width: 90%;
+      }
+    }
+  }
+}
+
+/************************************************************************************
+************************************ SMALL PHONE ************************************
+*************************************************************************************/
+@media screen and(max-width: 520px) {
+  // == HEADER
+  header div {
+    left: -15%;
+  }
+
+  // == MAIN
+  main {
+    // * SUBSCRIBE & CONNEXION
+    .data-flex form input {
+      width: 70%;
+    }
+
+    form {
+      // * DEMAND
+      fieldset {
+        .field {
+          position: relative;
+
+          label,
+          input {
+            display: block;
+            margin: 0 auto;
+          }
+
+          label {
+            width: 100%;
+            text-align: center;
+          }
+
+          input[type="date"] {
+            width: 50%;
+          }
+
+          select {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+        }
+      }
+
+      // * ACCOUNT & MODIFY
+      .edit {
+        .field {
+          input {
+            margin: 0 auto;
+          }
+
+          label {
+            width: 100%;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    // * BACKOFFICE
+    th,
+    td {
+      &:nth-of-type(5) {
+        display: none;
+      }
+    }
+  }
+
+  // * BONUS
+  .api div + p {
+    padding: 1.5rem;
+    font-size: 1.3rem;
+
+    q {
+      display: block;
+    }
+  }
+
+  // == FOOTER
+  footer {
+    padding-top: 0rem;
+    text-align: center;
+
+    div {
+      flex-flow: row wrap;
+      width: 60%;
+
+      ul {
+        width: 100%;
+        margin-top: 1rem;
+        padding-left: 0;
+
+        li {
+          margin-left: 0;
+        }
+
+        li:nth-child(1) {
+          border-top: 2px solid $dark;
+          padding-top: 0.4rem;
+          margin-top: 1rem;
+        }
+
+        &:nth-of-type(1) {
+          li:nth-of-type(1) {
+            border-top: none;
+          }
+        }
+      }
+    }
+  }
+
+  // == MODALS
+  .modal div i {
+    left: 94%;
+  }
+}
+
+/************************************************************************************
+************************************ NORMAL PHONE ***********************************
+*************************************************************************************/
+// Mobile first, see the main code up before RESPONSIVE tag, goes for => min 521px to max 785px
+
+/************************************************************************************
+************************************** TABLET ***************************************
+*************************************************************************************/
+@media screen and(min-width: 786px) {
+  // == HEADER
+  header {
+    flex-flow: column;
+    padding-bottom: 0.5rem;
+
+    nav {
+      position: initial;
+      width: 98%;
+
+      ul {
+        flex-flow: row wrap;
+
+        li:first-child {
+          width: 100%;
+
+          &:hover {
+            transform: none;
+            transition: none;
+          }
+
+          a:hover {
+            transform: none;
+            transition: none;
+          }
+        }
+
+        li {
+          width: 45%;
+          margin-top: 0.4rem;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  // == MAIN
+  main {
+    // * SERVICES
+    .data-flex {
+      flex-flow: column wrap;
+
+      article {
+        width: 70%;
+
+        &:nth-of-type(1),
+        &:nth-of-type(2) {
+          margin: 0 auto;
+        }
+
+        &:nth-of-type(2) {
+          margin-top: 2rem;
+        }
+
+        &:nth-of-type(3) {
+          width: 70%;
+          margin: 0 auto 2rem auto;
+        }
+      }
+    }
+
+    // * DEMAND
+    form {
+      label {
+        margin-bottom: 0.1rem;
+      }
+
+      label {
+        width: 40%;
+      }
+
+      label,
+      input {
+        display: inline-block;
+        text-align: left;
+      }
+
+      p {
+        line-height: 1.2;
+      }
+
+      .last-fieldset input {
+        width: 98%;
+      }
+    }
+
+    // * SUBSCRIBE & CONNEXION
+    .data-flex .field {
+      justify-content: center;
+    }
+
+    // * BACKOFFICE
+    th,
+    td {
+      &:nth-of-type(1),
+      &:nth-of-type(3),
+      &:nth-of-type(4),
+      &:last-child {
+        display: table-cell;
+      }
+    }
+  }
+}
+
+/************************************************************************************
+************************************** DESKTOP **************************************
+*************************************************************************************/
+@media screen and(min-width: 970px) {
+  // Errors messages
+  .error,
+  .errors {
+    text-align: initial;
+  }
+
+  // == HEADER
+  header {
+    flex-flow: row nowrap;
+    padding-bottom: initial;
+
+    div {
+      left: 0.5rem;
+    }
+
+    nav {
+      position: absolute;
+      right: 9%;
+      width: 55%;
+
+      ul {
+        flex-flow: row nowrap;
+
+        li {
+          background-color: transparent;
+          width: initial;
+          margin-top: 0;
+
+          &:first-child {
+            background-color: $secondary-color;
+            color: $light;
+            border-radius: 2rem;
+
+            &:hover {
+              transform: scale(1.2);
+              font-size: 1.8rem;
+              border-radius: 2rem;
+              background-color: $dark-secondary-color;
+              transition: 0.5s;
+            }
+
+            &:active {
+              transform: scale(1);
+              font-size: 1.6rem;
+              transition: 0.2s;
+            }
+
+            a:hover {
+              background-color: $dark-secondary-color;
+              transition: 0.5s;
+            }
+
+            a:active {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // == MAIN
+  main {
+    // * SERVICES
+    .data-flex {
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+
+      article {
+        width: 40%;
+
+        &:nth-of-type(1),
+        &:nth-of-type(2) {
+          margin: 0 auto;
+        }
+
+        &:nth-of-type(3) {
+          width: 75%;
+        }
+      }
+    }
+
+    // * DEMAND
+    form {
+      fieldset .field {
+        label,
+        input {
+          display: inline-block;
+        }
+
+        label {
+          width: 25%;
+          text-align: left;
+        }
+      }
+
+      .last-fieldset .field {
+        input {
+          width: 45%;
+        }
+
+        label {
+          width: 25%;
+        }
+
+        input,
+        label {
+          display: inline-block;
+          text-align: left;
+        }
+      }
+    }
+
+    // * BACKOFFICE
+    th,
+    td {
+      font-size: 0.9rem;
+      padding: 0.8rem 0.3rem;
+
+      &:nth-of-type(2) {
+        display: table-cell;
+      }
+    }
+
+    // * QUALITY
+    article {
+      iframe {
+        width: 70%;
+        min-height: 30rem;
+        margin-left: 15%;
+        margin-bottom: 1rem;
+      }
+    }
+
+    // * CONNEXION & SUBSCRIBE
+    .data-flex form {
+      width: 40%;
+
+      fieldset .field label {
+        width: 40%;
+      }
+    }
+  }
+
+  // == FOOTER
+  footer {
+    div {
+      justify-content: space-evenly;
+
+      ul {
+        width: auto;
+        border-left: 2px solid $dark;
+        padding-left: 0.4rem;
+
+        li {
+          margin-left: 0;
+        }
+
+        &:nth-of-type(3),
+        &:nth-of-type(4) {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  // == MODALS
+  .modal div i {
+    left: 98.2%;
+  }
+}
+
+// ************* DESKTOP ADJUSTMENT **************** \\
+@media screen and(min-width: 1033px) {
+  // == HEADER
+  header nav {
+    right: 5%;
+  }
+
+  // == MAIN
+  main {
+    // * DEMAND
+    form label {
+      width: 30%;
+    }
+
+    // * BACKOFFICE
+    table,
+    th,
+    td {
+      font-size: 1rem;
+      padding: 0.8rem 0.5rem;
+    }
+  }
+}
+
+// **************** DESKTOP ADJUSTMENT *************** \\
+@media screen and(min-width: 1080px) {
+  // == HEADER
+  header nav {
+    right: 1.5%;
+
+    ul li:first-child {
+      width: auto;
+    }
+  }
+
+  // == MAIN
+  main {
+    form {
+      // * DEMAND
+      fieldset label {
+        width: 30%;
+        text-align: left;
+      }
+
+      // * ACCOUNT & MODIFY
+      .edit .field {
+        input {
+          margin: 0 auto;
+        }
+
+        label {
+          width: 35%;
+        }
+      }
+    }
+
+    // * SERVICES
+    .data-flex article:nth-of-type(1),
+    .data-flex article:nth-of-type(2) {
+      width: 45%;
+    }
+
+    .data-flex article:nth-of-type(3) {
+      width: 85%;
+    }
+  }
+
+  /* Bonus */
+  .api div img {
+    width: 100%;
+  }
+}

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devis FakeSecurity</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        body{ 
+            background-color: rgb(231, 243, 254); /* $main-color */
+        }
+
+        main{
+            width: 95%;      
+            margin: 0 auto;
+            padding: 5px;
+            background-color: white;
+        }
+
+        h1,
+        h2,
+        h3{       
+            padding: 5px 0;
+            text-align: center;
+        }
+
+        h1{            
+            font-size: 24px;                      
+            background-color: rgb(231, 243, 254); /* $main-color */        
+        }
+
+        h2{
+            font-size: 20px;
+            margin-top: 5px;
+            color: white;            
+            background-color: #251a8f; /* $seconday-color */
+        }
+
+        h3{
+            font-size : 16px;
+            margin-top: 5px;
+            color: white;            
+            background-color: #54aaf8; /* $dark-main-color */
+        }
+
+        h2,
+        h3{
+            margin-top: -230px;
+            margin-bottom: 30px;
+        }
+
+        h2:first-child{
+            margin-top: 10px;
+        }
+
+        h2:nth-of-type(2){
+            position: relative;
+            bottom: 150px;
+            top: 20px;
+        }
+
+        h3:first-child{
+            margin-top: 10px;
+        }
+       
+        strong{ 
+            color: #54aaf8; /* $dark-main-color */
+        }
+        
+        span{ 
+            color: #251a8f; /* $secondary-color */
+        }
+
+        p{
+            text-align: center;
+            padding-top: 6px;
+        }
+
+        table,
+        tr,
+        td{
+            border: 1px solid black;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        td{ 
+            padding: 5px; 
+        }
+
+        table{ 
+            margin-top: 5px; 
+        }
+
+        table:first-child(){
+            margin-left: 25px;
+        }
+
+        .spec,
+        .team,
+        .video{
+            margin: 0 auto;
+        }
+
+        .period,
+        .support,
+        .dog{
+            margin-left: 560px;
+        } 
+
+        div{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-around;
+        }
+
+        tr:first-child{
+            text-align: center;
+            font-weight: bold;
+            padding: 5px;
+            border: 1px solid black;
+            border-bottom: none;            
+            background-color: rgb(231, 243, 254); /* $main-color */
+        }
+
+        .infos{
+            width: 280px;
+            word-wrap: break-word;
+        }
+
+        .infos,
+        .spec,
+        .team,
+        .video,
+        .lead,
+        .team,
+        .agent,
+        .dog,
+        .support{
+            margin-top: 20px;
+        }
+
+        .period tr{
+            background-color: #fff;
+            font-weight: normal;
+        }
+
+        .period tr:first-child{
+            background-color: rgb(231, 243, 254);
+            font-weight: bold;
+        }
+
+        .price{ 
+            margin: 5px auto 25px auto; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><strong>Fake<span>Security</span></strong></h1>
+    </header>
+
+    <main>
+        <p>Votre demande à bien été prise en compte, vous serez recontacté bientôt par nos équipes.</p>
+        <h2>Récapitulatif de votre demande de devis </h2>  
+        
+        <!-- Container -->
+        <div>
+
+            <!-- CLIENT CONTACT INFORMATIONS -->
+            <table class="infos">
+                <tr>
+                    <td colspan="2">Vos coordonnées</td>
+                </tr>
+                <tr>
+                    <td>Nom</td>
+                    <td><?= $lastName ?></td>
+                </tr>
+                <tr>
+                    <td>Prénom</td>
+                    <td><?= $firstName ?></td>
+                </tr>
+                <tr>
+                    <td>Société</td>
+                    <td><?= $society ?></td>
+                </tr>
+                <tr>
+                    <td>Adresse e-mail</td>
+                    <td><?= $mail ?></td>
+                </tr>
+                <tr>
+                    <td>Téléphone</td>
+                    <td><?= $phone ?></td>
+                </tr>
+            </table>
+     
+            <!-- SITE INFORMATIONS -->
+            <table class="spec">
+                <tr>
+                    <td colspan="2">Spécificitées du site</td>
+                </tr>
+                <tr>
+                    <td>Type de site</td>
+                    <td><?= $siteType ?></td>
+                </tr>
+                <tr>
+                    <td>Nom du site</td>
+                    <td><?= $siteName ?></td>
+                </tr>
+                <tr>
+                    <td>Superficie</td>
+                    <td><?= $superficie ?> m²</td>
+                </tr>
+            </table>
+ 
+            <!-- DATES -->
+            <table class="period">
+                <tr>
+                    <td colspan="2">Période</td>
+                </tr>
+
+                <!-- Begin date -->
+                <tr>
+                    <td>Début de prestation</td>
+                    <td><?= implode('-', array_reverse(explode('-', $dateBegin))) ?></td>
+                </tr>
+
+                <!-- End date -->
+                <tr>
+                    <td>Fin de prestation</td>
+                    <td><?= implode('-', array_reverse(explode('-', $dateEnd))) ?></td>
+                </tr>
+            </table>          
+        </div>    
+
+        <h2>Effectifs commandés</h2>
+        <h3>Encadrement</h3>
+        
+        <div>
+            <!-- LEADER -->
+            <table class="lead">
+                <tr>
+                    <td colspan="2">Chef de site</td>
+                </tr>
+                <tr>
+                    <td>Nombre de jours</td>
+                    <td><?= $leadDays ?></td>
+                </tr>
+                <tr>
+                    <td>Nombre d'heures</td>
+                    <td><?= $leadHours ?></td>
+                </tr>
+                <tr>
+                    <td>Prix</td>
+                    <td><?= number_format($leadFinalPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+            </table>
+ 
+            <!-- TEAM LEADER -->
+            <table class="team">
+                <tr>
+                    <td colspan="2">Chef d'équipe</td>
+                </tr>
+                <tr>
+                    <td>Nombre de jours</td>
+                    <td><?= $teamDays ?></td>
+                </tr>
+                <tr>
+                    <td>Nombre d'heures</td>
+                    <td><?= $teamHours ?></td>
+                </tr>
+                <tr>
+                    <td>Prix</td>
+                    <td><?= number_format($teamFinalPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+            </table>
+  
+            <!-- SUPPORT TEAM LEADER -->
+            <table class="support">
+                <tr>
+                    <td colspan="2">Adjoints chef d'équipe</td>
+                </tr>
+                <tr>
+                    <td>Nombre d'agents</td>
+                    <td><?= $supportNumber?></td>
+                </tr>
+                <tr>
+                    <td>Nombre de jours</td>
+                    <td><?= $supportDays ?></td>
+                </tr>
+                <tr>
+                    <td>Nombre d'heures</td>
+                    <td><?= $supportHours ?></td>
+                </tr>
+                <tr>
+                    <td>Prix</td>
+                    <td><?= number_format($supportFinalPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+            </table>
+        </div>
+
+        <h3>Agents</h3>
+
+        <div>
+            <!-- SIMPLE AGENT -->
+            <table class="agent">
+                <tr>
+                    <td colspan="2">Agents de sécurité</caption>
+                </tr>
+                <tr>
+                    <td>Nombre d'agents</td>
+                    <td><?= $agentNumber ?></td>
+                </tr>
+                <tr>
+                    <td>Nombre de jours</td>
+                    <td><?= $agentDays ?></td>
+                </tr>
+                <tr>
+                    <td>Nombre d'heures</td>
+                    <td><?= $agentHours ?></td>
+                </tr>
+                <tr>
+                    <td>Prix</td>
+                    <td><?= number_format($agentFinalPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+            </table>
+
+            <!-- VIDEO AGENT -->
+            <table class="video">
+                <tr>
+                    <td colspan="2">Opérateurs vidéo</caption>
+                </tr>
+                <tr>
+                    <td>Nombre d'agents</td>
+                    <td><?= $videoNumber ?></td>
+                </tr>
+                <tr>
+                    <td>Nombre de jours</td>
+                    <td><?= $videoDays ?></td>
+                </tr>
+                <tr>
+                    <td>Nombre d'heures</td>
+                    <td><?= $videoHours ?></td>
+                </tr>
+                <tr>
+                    <td>Prix</td>
+                    <td><?= number_format($videoFinalPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+            </table>
+
+            <!-- AGENT WITH DOG -->
+            <table class="dog">
+                <tr>
+                    <td colspan="2">Agents cynophiles</caption>
+                </tr>
+                <tr>
+                    <td>Nombre d'agents</td>
+                    <td><?= $dogNumber ?></td>
+                </tr>
+                <tr>
+                    <td>Nombre de jours</td>
+                    <td><?= $dogDays ?></td>
+                </tr>
+                <tr>
+                    <td>Nombre d'heures</td>
+                    <td><?= $dogHours ?></td>
+                </tr>
+                <tr>
+                    <td>Prix</td>
+                    <td><?= number_format($dogFinalPrice, 2, ',', ' ') ?> €</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- PRICE -->
+        <h2>Tarifs</h2>
+        <table class="price">
+            <tr>
+                <td colspan="2">Prix</td>
+            </tr>
+            <tr>
+                <td>Prix HT</td>
+                <td><?= number_format($priceHT , 2, ',', ' ') ?> €</td>
+            </tr>
+            <tr>
+                <td>TVA 20%</td>
+                <td><?= number_format($amountTVA , 2, ',', ' ') ?>€</td>
+            </tr>
+            <tr>
+                <td>Prix TTC</td>
+                <td><?= number_format($priceTTC , 2, ',', ' ') ?> €</td>
+            </tr>
+        </table>
+    </main>
+    
+    <footer>
+        <p>Attention il ne s'agit que d'une estimation.</p>
+        <p>Identifiant <?= \Session::showStatut() ?> : <?= \Session::showId() ?></p>
+    </footer>
+    
+</body>
+</html>

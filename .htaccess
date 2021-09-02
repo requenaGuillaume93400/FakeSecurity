@@ -1,0 +1,73 @@
+# =========================================================================================================================== #
+# ===================================================  URL rewriting only =================================================== #
+# =========================================================================================================================== #
+
+# ----------------------------------------------- Server must follow symbols links
+
+Options +FollowSymlinks
+
+
+# --------------------------------------------------- Activate rewriting engine
+
+RewriteEngine on
+
+
+# --------------------------------------------------------- Rewriting Rules
+
+# -- Homepage - Services - Bonus - Rules - Quality -- #
+RewriteRule (.sql|.json)$ index.php?page=homepage
+RewriteRule ^homepage$ index.php?page=homepage
+RewriteRule ^services$ index.php?page=services
+RewriteRule ^bonus$ index.php?page=bonus
+RewriteRule ^rules$ index.php?page=rules
+RewriteRule ^quality$ index.php?page=quality
+
+# -- Sanction -- #
+RewriteRule ^sanction$ index.php?page=sanction
+RewriteRule ^sanction-success-([0-9])$ index.php?page=sanction&success=$1
+RewriteRule ^sanction-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)$ index.php?page=sanction&agent=$1&sanction=$2&reason=$3&date=$4
+
+# -- Order -- #
+RewriteRule ^order$ index.php?page=order
+RewriteRule ^order-success-([0-9])$ index.php?page=order&success=$1
+RewriteRule ^order-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)$ index.php?page=order&id=$1&date=$2&ttc=$3&ah=$4&lh=$5&th=$6&sh=$7&vh=$8&dh=$9
+
+# -- Connexion -- #
+RewriteRule ^connexion$ index.php?page=connexion
+RewriteRule ^connexion-fail-([0-9])$ index.php?page=connexion&fail=$1
+RewriteRule ^connexion-success-([12])$ index.php?page=connexion&success=$1
+RewriteRule ^connexion-(agent|client)-([0-9]{1,3})$ index.php?page=connexion&$1-mail=$2
+RewriteRule ^connexion-(agent|client)-([0-9]{1,3})-([0-9]{1,3})$ index.php?page=connexion&$1-p1=$2&$1-mail=$3
+
+# -- Subscribe -- #
+RewriteRule ^subscribe$ index.php?page=subscribe
+RewriteRule ^subscribe-(client)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)$ index.php?page=subscribe&satut=$1&client-l-name=$2&client-f-name=$3&client-mail=$4&client-phone=$5&society=$6&client-p1=$7&client-p2=$8
+RewriteRule ^subscribe-(agent)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)$ index.php?page=subscribe&satut=$1&agent-l-name=$2&agent-f-name=$3&agent-mail=$4&agent-phone=$5&society=$6&agent-p1=$7&agent-p2=$8
+
+# -- Deconnexion -- #
+RewriteRule ^deconnexion$ index.php?page=deconnexion
+RewriteRule ^deconnexion-success-([12])$ index.php?page=deconnexion&success=$1
+
+# -- Account -- #
+RewriteRule ^account$ index.php?page=account
+RewriteRule ^account-(agent|client)-([0-9]+)$ index.php?page=account&statut=$1&id=$2
+RewriteRule ^account-(agent|client)-([0-9]+)-([0-9])$ index.php?page=account&statut=$1&id=$2&delete=$3
+
+# -- Backoffice -- #
+RewriteRule ^backoffice$ index.php?page=backoffice
+RewriteRule ^backoffice-confirm-(agent|client)-([0-9]+)$ index.php?page=backoffice&statut=$1&confirm=$2
+RewriteRule ^backoffice-delete-(agent|client|sanction|order)-([0-9]+)$ index.php?page=backoffice&statut=$1&delete=$2
+RewriteRule ^backoffice-upgrade-(agent)-([0-9]+)$ index.php?page=backoffice&statut=$1&upgrade=$2
+
+# -- Modify -- #
+RewriteRule ^modify$ index.php?page=backoffice
+RewriteRule ^modify-(agent|client)-([0-9]+)$ index.php?page=modify&statut=$1&id=$2
+
+# -- Demand -- #
+RewriteRule ^demand$ index.php?page=demand
+# -- /!\ This one was hard for me it took me 2 days to understand the issue of max parameter (9), find a solution and i had to change my errors notification system in demand.phtml
+RewriteRule demand-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+) index.php?page=demand&type=$1&site=$2&superficie=$3&additionnal=$4&date=$5&ld=$6&lh=$7&td=$8 [E=ONE:True]
+RewriteRule -([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+) &th=$1&sn=$2&sd=$3&sh=$4&vn=$5&vd=$6&vh=$7&an=$8&ad=$9 [E=TWO:True]
+RewriteCond %{ENV:ONE} =True
+RewriteCond %{ENV:TWO} =True
+RewriteRule -([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+) &ah=$1&dn=$2&dd=$3&dh=$4&last-name=$5&first-name=$6&society=$7&mail=$8&phone=$9

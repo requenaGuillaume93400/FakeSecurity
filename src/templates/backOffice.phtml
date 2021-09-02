@@ -1,0 +1,183 @@
+<!-- ======================================= MAIN ============================================== -->
+<main class="area">
+    <h1>Espace admin</h1>
+    <p><a href="bonus">Bonus</a></p>
+    
+    <!-- LIST OF ALL CLIENT -->
+    <table id="clients">
+        <caption id="toggle-client">Clients</caption>
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Site</th>
+                <th>Société</th>
+                <th>Adresse</th>
+                <th>Référent</th>
+                <th>Contact</th>
+                <th>Confirmer</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($clients as $index => $value): ?>
+                        <tr>
+                            <td><?= intval($clients[$index]['id']) ?></td>
+                            <td><?= htmlspecialchars($clients[$index]['siteName']).' '.htmlspecialchars($clients[$index]['siteType']) ?></td>
+                            <td><?php if($clients[$index]['society'] !== 'NULL') echo htmlspecialchars($clients[$index]['society']); ?></td>
+                            <td><?= htmlspecialchars($clients[$index]['address']).' '.htmlspecialchars($clients[$index]['postalCode']) ?></td>
+                            <td><?= htmlspecialchars($clients[$index]['lastName']).' '.htmlspecialchars($clients[$index]['firstName']) ?></td>
+                            <td>
+                                <a href='mailto:<?= htmlspecialchars($clients[$index]['mail']) ?>' title="Envoyer un mail">
+                                    <?= htmlspecialchars($clients[$index]["mail"]) ?>
+                                </a> 
+                                <a href='tel:<?= htmlspecialchars($clients[$index]['phone']) ?>' title="Lancer l\'appel">
+                                    <?= htmlspecialchars($clients[$index]['phone']) ?>
+                                </a>
+                            </td>
+                            <td>
+                                <?php if(intval($clients[$index]['confirmed']) !== 1) { ?>                                    
+                                    <a href="backoffice-confirm-client-<?= intval($clients[$index]['id']) ?>" id="confirm-client-<?= intval($clients[$index]['id']) ?>">
+                                        <img src="assets/img/valid.png" alt="valid icon"/>
+                                    </a>
+                                <?php } ?>                                
+                            </td>
+                            <td>
+                                <a href="modify-client-<?= intval($clients[$index]['id']) ?>">
+                                    <span>Modifier</span>
+                                </a>
+                            </td>  
+                            <td>
+                                <a href="backoffice-delete-client-<?= intval($clients[$index]['id']) ?>" id="delete-client-<?= intval($clients[$index]['id']) ?>">
+                                    <img src="assets/img/close.png" alt="close icon"/>
+                                </a>
+                            </td>       
+                        </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <!-- LIST OF ALL ORDERS -->
+    <table id="orders">
+        <caption id="toggle-order">Commandes</caption>
+        <thead>
+            <tr>
+            <th>N°</th>
+            <th>id client</th>
+            <th>Total Heures</th>
+            <th>Prix TTC</th>
+            <th>Début</th>
+            <th>Fin</th>
+            <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($orders as $index => $value): ?>
+                <tr>
+                    <td><?= intval($orders[$index]['id']) ?></td>
+                    <td><?php if(intval($orders[$index]['idClient']) !== 0) echo intval($orders[$index]['idClient']); ?></td>
+                    <td><?= intval($orders[$index]['totalHours']) ?></td>
+                    <td><?= number_format(floatval($orders[$index]['priceTTC']), 2, ',', ' ').' €'  ?></td>
+                    <td><?= htmlspecialchars(implode('-', array_reverse(explode('-', $orders[$index]['beginDate'])))) ?></td>
+                    <td><?= htmlspecialchars(implode('-', array_reverse(explode('-', $orders[$index]['endDate'])))) ?></td>
+                    <td>
+                        <a href="backoffice-delete-order-<?= intval($orders[$index]['id']) ?>" id="delete-order-<?= intval($orders[$index]['id']) ?>">
+                            <img src="assets/img/close.png" alt="close icon"/>
+                        </a>
+                    </td>  
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <!-- LIST OF ALL AGENTS -->
+    <table id="agents">
+        <caption id="toggle-agent">Agents</caption>
+        <thead>
+            <tr>
+            <th>N°</th>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>Contact</th>
+            <th>Confirmer</th>
+            <th>Admin</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($agents as $index => $value): ?>
+                <tr>
+                    <td><?= intval($agents[$index]['id']) ?></td>
+                    <td><?= htmlspecialchars($agents[$index]['matricule']) ?></td>
+                    <td><?= htmlspecialchars($agents[$index]['lastName']).' '.htmlspecialchars($agents[$index]['firstName']) ?></td>
+                    <td><?= htmlspecialchars($agents[$index]['address']).' '.htmlspecialchars($agents[$index]['postalCode']) ?></td>
+                    <td>                        
+                        <a href='mailto:<?= htmlspecialchars($agents[$index]['mail']) ?>' title="Envoyer un mail">
+                            <?= htmlspecialchars($agents[$index]["mail"]) ?>
+                        </a> 
+                        <a href='tel:<?= htmlspecialchars($agents[$index]['phone']) ?>' title="Lancer l\'appel">
+                            <?= htmlspecialchars($agents[$index]['phone']) ?>
+                        </a>
+                    </td>
+                    <td>
+                        <?php if(intval($agents[$index]['confirmed']) !== 1) { ?> 
+                            <a href="backoffice-confirm-agent-<?= intval($agents[$index]['id']) ?>" id="confirm-agent-<?= intval($agents[$index]['id']) ?>">
+                                <img src="assets/img/valid.png" alt="valid icon"/>
+                            </a>
+                        <?php } ?>
+                    </td>
+                    <td>         
+                        <?php if(intval($agents[$index]['admin']) !== 1) { ?>
+                            <a href="backoffice-upgrade-agent-<?= intval($agents[$index]['id']) ?>" id="upgrade-agent-<?= intval($agents[$index]['id']) ?>">
+                                <img src="assets/img/admin.png" alt="admin icon"/>
+                            </a>
+                        <?php } ?>
+                    </td>
+                    <td>
+                        <a href="modify-agent-<?= intval($agents[$index]['id']) ?>">
+                            <span>Modifier</span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="backoffice-delete-agent-<?= intval($agents[$index]['id']) ?>" id="delete-agent-<?= intval($agents[$index]['id']) ?>">
+                            <img src="assets/img/close.png" alt="close icon"/>
+                        </a>
+                    </td>       
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <!-- LIST OF ALL SETTED SANCTIONS (with associated ID agents) -->
+    <table id="sanctions">
+        <caption id="toggle-sanction">Sanctions infligées</caption>
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>id agent</th>
+                <th>Sanction</th>
+                <th>Motif</th>
+                <th>Notifié le</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>                
+            <?php foreach($sanctions as $index => $value): ?>
+                <tr>
+                    <td><?= intval($sanctions[$index]['id']) ?></td>
+                    <td><?= intval($sanctions[$index]['idAgent']) ?></td>
+                    <td><?= htmlspecialchars($sanctions[$index]['entitled']) ?></td>
+                    <td><?= htmlspecialchars($sanctions[$index]['reason']) ?></td>
+                    <td><?= htmlspecialchars($sanctions[$index]['dateNotification']) ?></td>
+                    <td>
+                        <a href="backoffice-delete-sanction-<?= intval($sanctions[$index]['id']) ?>" id="delete-sanction-<?= intval($sanctions[$index]['id']) ?>">
+                            <img src="assets/img/close.png" alt="close icon"/>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</main>

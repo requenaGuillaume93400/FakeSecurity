@@ -1,0 +1,155 @@
+<!-- ======================================= MAIN ============================================== -->
+<main>
+    <h1>Inscription</h1>
+
+    <div class="data-flex">
+
+        <!-- Clients Subscribe Form -->
+        <form method="POST" id="client">
+
+            <fieldset>
+                <legend>Clients</legend>
+    
+                <!-- Last Name -->
+                <div class="field">
+                    <label for="last-name-client">Nom :</label>
+                    <input type="text" name="last-name-client" id="last-name-client" required />
+                </div>
+                <!-- Error message if an error has occurred -->
+                <p class="errors"><?php if(isset($_GET['client-l-name'])) echo $dataStatut[$notifLc]; ?></p>
+    
+                <!-- First Name -->
+                <div class="field">
+                    <label for="first-name-client">Prénom :</label>
+                    <input type="text" name="first-name-client" id="first-name-client" required />
+                </div>
+                <!-- Error message if an error has occurred -->
+                <p class="errors"><?php if(isset($_GET['client-f-name'])) echo $dataStatut[$notifFc]; ?></p>
+    
+                <!-- Society (not required) -->
+                <div class="field">
+                    <label for="society">Société (facultatif) :</label>
+                    <input type="text" name="society" id="society" />
+                </div>
+                <!-- Error message if an error has occurred -->
+                <p class="errors"><?php if(isset($_GET['society']) && $_GET['society'] != 1) echo $dataStatut[$notifSc]; ?></p>
+    
+                <!-- E-mail -->
+                <div class="field">
+                    <label for="mail-client">E-mail :</label>
+                    <input type="email" name="mail-client" id="mail-client" required />
+                </div>
+                <!-- Error message if an error has occurred -->
+                <p class="errors"><?php if(isset($_GET['client-mail'])) echo $dataStatut[$notifMc]; ?></p>
+    
+                <!-- Phone Number -->
+                <div class="field">
+                    <label for="phone-client">Téléphone :</label>
+                    <input type="tel" name="phone-client" id="phone-client" required />
+                </div>
+                <!-- Error message if an error has occurred -->
+                <p class="errors"><?php if(isset($_GET['client-phone'])) echo $dataStatut[$notifPc]; ?></p>
+    
+                <!-- Password -->
+                <div class="field">
+                    <label for="pass-client">Mot de passe :</label>
+                    <input type="password" name="pass-client" id="pass-client" required />
+                </div>
+                <!-- Error message if an error has occurred -->
+                <p class="errors"><?php if(isset($_GET['client-p1'])) echo $dataStatut[$notifP1c]; ?></p>
+    
+                <!-- Verif password -->
+                <div class="field">
+                    <label for="pass-verif-client">Retapez le mot de passe :</label>
+                    <input
+                        type="password"
+                        name="pass-verif-client"
+                        id="pass-verif-client"
+                        required
+                    />
+                </div>
+                <!-- Error message if an error has occurred -->
+                <p class="errors"><?php if(isset($_GET['client-p2'])) echo $dataStatut[$notifP2c]; ?></p>
+    
+                <!--  Submit button for client's subscribe -->
+                <input
+                    type="submit"
+                    name="submit-client"
+                    id="submit-client"
+                    value="Inscription"
+                />
+            </fieldset>
+        </form>
+
+        <!-- Agents Subscribe Form -->
+        <form method="POST" id="agent">
+
+            <fieldset>
+                <legend>Agents</legend>
+    
+                <!-- Last Name -->
+                <div class="field">
+                    <label for="last-name-agent">Nom :</label>
+                    <input type="text" name="last-name-agent" id="last-name-agent" required />
+                </div>
+                <!-- Error message if an error has occurred -->
+                <p class="errors"><?php if(isset($_GET['agent-l-name'])) echo $dataStatut[$notifLa]; ?></p>
+    
+                <!-- First Name -->
+                <div class="field">
+                    <label for="first-name-agent">Prénom :</label>
+                    <input type="text" name="first-name-agent" id="first-name-agent" required />
+                </div>
+                <!-- Error message if an error has occurred -->
+                <p class="errors"><?php if(isset($_GET['agent-f-name'])) echo $dataStatut[$notifFa]; ?></p>
+    
+                <!-- E-mail -->
+                <div class="field">
+                    <label for="mail-agent">E-mail :</label>
+                    <input type="email" name="mail-agent" id="mail-agent" required />
+                </div>
+                <!-- Error message if an error has occurred -->
+                <p class="errors"><?php if(isset($_GET['agent-mail'])) echo $dataStatut[$notifMa]; ?></p>
+    
+                <!-- Phone Number -->
+                <div class="field">
+                    <label for="phone-agent">Téléphone :</label>
+                    <input type="tel" name="phone-agent" id="phone-agent" required />
+                </div>
+                <!-- Error message if an error has occurred -->
+                <p class="errors"><?php if(isset($_GET['agent-phone'])) echo $dataStatut[$notifPa]; ?></p>
+    
+                <!-- Password -->
+                <div class="field">
+                    <label for="pass-agent">Mot de passe :</label>
+                    <input type="password" name="pass-agent" id="pass-agent" required />
+                </div>
+                <!-- Error message if an error has occurred -->
+                <p class="errors"><?php if(isset($_GET['agent-p1'])) echo $dataStatut[$notifP1a]; ?></p>
+    
+                <!-- Verif Password -->
+                <div class="field">
+                    <label for="pass-verif-agent">Retapez le mot de passe :</label>
+                    <input
+                        type="password"
+                        name="pass-verif-agent"
+                        id="pass-verif-agent"
+                        required
+                    />
+                </div>
+                <!-- Error message if an error has occurred -->
+                <p class="errors"><?php if(isset($_GET['agent-p2'])) echo $dataStatut[$notifP2a]; ?></p>
+    
+                <!--  Submit button for client's subscribe -->
+                <input
+                    type="submit"
+                    name="submit-agent"
+                    id="submit-agent"
+                    value="Inscription"
+                />
+            </fieldset>
+        </form>
+
+    </div>
+    
+</main>
