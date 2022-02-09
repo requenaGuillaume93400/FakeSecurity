@@ -1,41 +1,31 @@
 <!-- ======================================= MAIN ============================================== -->
 <main>
     <h1>Connexion</h1>
-
-    <!-- Success Message (if an user has sucessfully subscribed) -->
     <div>
         <p class="<?php if(isset($notifSuccess)) echo 'success'; ?>"><?php if(isset($notifSuccess)) echo $notifSuccess; ?></p>
     </div>
 
-    <!-- Failure Message (if an user tried to access somewhere he has no rights to access) -->
     <p class="<?php if(isset($notifFail)) echo 'fail'; ?>"><?php if(isset($notifFail)) echo $notifFail; ?></p>
 
-    <!-- Flex Container (contains 2 form) -->
     <div class="data-flex">
 
-        <!-- Connexion form for CLIENTS -->
         <form method="POST">
 
             <fieldset>
                 <legend>Clients</legend>
 
-                <!-- E-mail -->
                 <div class="field">
                     <label for="mail-client">E-mail :</label>
                     <input type="email" name="mail-client" id="mail-client" required/>
-                </div>
-                <!-- Notification message if an error has occurred -->
+                </div>                
                 <p class="errors"><?php if(isset($_GET['client-mail'])) echo $dataStatut[$notifMc]; ?></p>
 
-                <!-- Password -->
                 <div class="field">
                     <label for="pass-client">Mot de passe :</label>
                     <input type="password" name="pass-client" id="pass-client" required/>
-                </div>
-                <!-- Notification message if an error has occurred -->
+                </div>                
                 <p class="errors"><?php if(isset($_GET['client-p1']) && !empty($_GET['client-p1'])) echo $dataStatut[$notifPc]; ?></p>
 
-                <!-- Submit connexion button for clients -->
                 <input
                     type="submit"
                     name="submit-client"
@@ -45,29 +35,23 @@
             </fieldset>
         </form>
 
-        <!-- Connexion form for AGENTS -->
         <form method="POST">
 
             <fieldset>
                 <legend>Agents</legend>
 
-                <!-- E-mail -->
                 <div class="field">
                     <label for="mail-agent">E-mail :</label>
                     <input type="email" name="mail-agent" id="mail-agent" required/>
-                </div>
-                <!-- Notification message if an error has occurred -->
+                </div>                
                 <p class="errors"><?php if(isset($_GET['agent-mail'])) echo $dataStatut[$notifMa]; ?></p>
 
-                <!-- Password -->
                 <div class="field">
                     <label for="pass-agent">Mot de passe :</label>
                     <input type="password" name="pass-agent" id="pass-agent" required/>
-                </div>
-                <!-- Notification message if an error has occurred -->
+                </div>                
                 <p class="errors"><?php if(isset($_GET['agent-p1']) && !empty($_GET['agent-p1'])) echo $dataStatut[$notifPa];  ?></p>
 
-                <!-- Submit connexion button for agents -->
                 <input
                     type="submit"
                     name="submit-agent"

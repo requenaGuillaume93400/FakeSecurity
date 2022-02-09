@@ -3,15 +3,10 @@
 class Database
 {
 
-    // private const DB_HOST = 'db.3wa.io';
-    // private const DB_NAME = 'guillaumereq_projet';
-    // private const DB_USER = 'guillaumereq';
-    // private const DB_PASSWORD = 'b3af70fcb7d8c05fa7fe252a919a8a2f';
-
-    private const DB_HOST = 'localhost';
-    private const DB_NAME = 'conception';
-    private const DB_USER = 'root';
-    private const DB_PASSWORD = '';
+    private const DB_HOST = 'db.3wa.io';
+    private const DB_NAME = 'guillaumereq_test';
+    private const DB_USER = 'guillaumereq';
+    private const DB_PASSWORD = 'b3af70fcb7d8c05fa7fe252a919a8a2f';
 
     private static $instance;
 

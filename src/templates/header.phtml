@@ -1,9 +1,7 @@
 <!-- ======================================= HEADER ============================================== -->
-<!-- Flex Container header  -->
 <header>
     <div>
         <a href="homepage" title="Choisissez nous, où vous aurez des problèmes">
-            <!-- Logo -->
             <img src="./assets/img/logo.png" alt="Logo FakeSecurity" />
             <strong>
                 Fake<span>Security</span>
@@ -11,10 +9,8 @@
         </a>
     </div>
     <nav>
-        <!-- Flex Container ul -->
         <ul>
             <?php if(!Access::connected()){ ?>
-                <!-- UNCONNECTED USERS -->
                 <li><a href="demand">Devis</a></li>
                 <li><a href="homepage">Accueil</a></li>
                 <li><a href="services">Prestations</a></li>
@@ -22,22 +18,18 @@
                 <li><a href="connexion">Connexion</a></li>
             <?php }else{ ?>
                 <?php if(isset($_SESSION['admin']) && $_SESSION['admin'] === 1){ ?>
-                    <!-- ADMINS (admins are agents) -->
                     <li><a href="backoffice">Admin</a></li>
                     <li><a href="order">Commande</a></li>
                     <li><a href="sanction">Sanction</a></li>
                 <?php }else if(isset($_SESSION['statut']) && $_SESSION['statut'] === 'agent'){ ?>
-                    <!-- AGENTS (who aren't admin) -->
                     <li><a href="demand">Devis</a></li>
                     <li><a href="rules">Règlement</a></li>
                     <li><a href="bonus">Bonus</a></li>
                 <?php }else{ ?>
-                    <!-- CLIENTS -->
                     <li><a href="demand">Devis</a></li>
                     <li><a href="quality">Qualité</a></li>
                     <li><a href="services">Prestations</a></li>
                <?php } ?>
-               <!-- COMMON Clients-Agents -->
                 <li><a href='<?= "account-$statut-$id" ?>'>Profil</a></li>
                 <li><a href="deconnexion">Deconnexion</a></li>
             <?php } ?>

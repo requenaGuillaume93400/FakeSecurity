@@ -12,7 +12,7 @@
         }
         
         body{ 
-            background-color: rgb(231, 243, 254); /* $main-color */
+            background-color: rgb(231, 243, 254);
         }
 
         main{
@@ -31,21 +31,21 @@
 
         h1{            
             font-size: 24px;                      
-            background-color: rgb(231, 243, 254); /* $main-color */        
+            background-color: rgb(231, 243, 254);     
         }
 
         h2{
             font-size: 20px;
             margin-top: 5px;
             color: white;            
-            background-color: #251a8f; /* $seconday-color */
+            background-color: #251a8f;
         }
 
         h3{
             font-size : 16px;
             margin-top: 5px;
             color: white;            
-            background-color: #54aaf8; /* $dark-main-color */
+            background-color: #54aaf8;
         }
 
         h2,
@@ -69,11 +69,11 @@
         }
        
         strong{ 
-            color: #54aaf8; /* $dark-main-color */
+            color: #54aaf8;
         }
         
         span{ 
-            color: #251a8f; /* $secondary-color */
+            color: #251a8f;
         }
 
         p{
@@ -125,7 +125,7 @@
             padding: 5px;
             border: 1px solid black;
             border-bottom: none;            
-            background-color: rgb(231, 243, 254); /* $main-color */
+            background-color: rgb(231, 243, 254);
         }
 
         .infos{
@@ -169,10 +169,8 @@
         <p>Votre demande à bien été prise en compte, vous serez recontacté bientôt par nos équipes.</p>
         <h2>Récapitulatif de votre demande de devis </h2>  
         
-        <!-- Container -->
         <div>
 
-            <!-- CLIENT CONTACT INFORMATIONS -->
             <table class="infos">
                 <tr>
                     <td colspan="2">Vos coordonnées</td>
@@ -198,8 +196,7 @@
                     <td><?= $phone ?></td>
                 </tr>
             </table>
-     
-            <!-- SITE INFORMATIONS -->
+
             <table class="spec">
                 <tr>
                     <td colspan="2">Spécificitées du site</td>
@@ -217,20 +214,17 @@
                     <td><?= $superficie ?> m²</td>
                 </tr>
             </table>
- 
-            <!-- DATES -->
+
             <table class="period">
                 <tr>
                     <td colspan="2">Période</td>
                 </tr>
 
-                <!-- Begin date -->
                 <tr>
                     <td>Début de prestation</td>
                     <td><?= implode('-', array_reverse(explode('-', $dateBegin))) ?></td>
                 </tr>
 
-                <!-- End date -->
                 <tr>
                     <td>Fin de prestation</td>
                     <td><?= implode('-', array_reverse(explode('-', $dateEnd))) ?></td>
@@ -242,7 +236,6 @@
         <h3>Encadrement</h3>
         
         <div>
-            <!-- LEADER -->
             <table class="lead">
                 <tr>
                     <td colspan="2">Chef de site</td>
@@ -260,8 +253,7 @@
                     <td><?= number_format($leadFinalPrice, 2, ',', ' ') ?> €</td>
                 </tr>
             </table>
- 
-            <!-- TEAM LEADER -->
+
             <table class="team">
                 <tr>
                     <td colspan="2">Chef d'équipe</td>
@@ -279,8 +271,7 @@
                     <td><?= number_format($teamFinalPrice, 2, ',', ' ') ?> €</td>
                 </tr>
             </table>
-  
-            <!-- SUPPORT TEAM LEADER -->
+
             <table class="support">
                 <tr>
                     <td colspan="2">Adjoints chef d'équipe</td>
@@ -307,7 +298,6 @@
         <h3>Agents</h3>
 
         <div>
-            <!-- SIMPLE AGENT -->
             <table class="agent">
                 <tr>
                     <td colspan="2">Agents de sécurité</caption>
@@ -330,7 +320,6 @@
                 </tr>
             </table>
 
-            <!-- VIDEO AGENT -->
             <table class="video">
                 <tr>
                     <td colspan="2">Opérateurs vidéo</caption>
@@ -353,7 +342,6 @@
                 </tr>
             </table>
 
-            <!-- AGENT WITH DOG -->
             <table class="dog">
                 <tr>
                     <td colspan="2">Agents cynophiles</caption>
@@ -377,7 +365,6 @@
             </table>
         </div>
 
-        <!-- PRICE -->
         <h2>Tarifs</h2>
         <table class="price">
             <tr>

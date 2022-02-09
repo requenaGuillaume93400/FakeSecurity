@@ -3,14 +3,11 @@
     <h1>Devis</h1>
     <p>Les catégories marquées avec * sont obligatoires pour soumettre la demande de devis.</p>
 
-    <!-- Form to submit for quotation demand or immediate estimation -->
     <form method="POST">
 
-        <!-- Informations of the site -->
         <fieldset>
             <legend class="obligatory" id="toggle-spec">Spécificitées du site</legend>
 
-            <!-- Site Type -->
             <div class="field">
                 <label for="type">Séléctionnez le type de site</label>
                 <select name="type" id="type" required>
@@ -59,11 +56,9 @@
                     </optgroup>
 
                 </select>
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[1])) echo $dataStatut[$getQueryString[1]]; ?></p>
 
-            <!-- Site Name -->
             <div class="field">
                 <label for="site">Nom du site :</label>
                 <input 
@@ -73,11 +68,9 @@
                     value="<?php if(isset($result['siteName']) && !empty($result['siteName'])) echo htmlspecialchars($result['siteName']); ?>" 
                     required
                 />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[2])) echo $dataStatut[$getQueryString[2]]; ?></p>
 
-            <!-- Superficie in m² of the site -->
             <div class="field">
                 <label for="superficie">Superficie du site en m² :</label>
                 <input 
@@ -87,11 +80,9 @@
                     value="<?php if(isset($result['superficie']) && !empty($result['superficie'])) echo htmlspecialchars($result['superficie']); ?>" 
                     required
                 />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[3])) echo $dataStatut[$getQueryString[3]]; ?></p>
 
-            <!-- User can give additionnals informations if he want (not required) -->
             <div class="field">
                 <label for="additionnal">Vous souhaitez nous faire part d'informations complémentaires (facultatif) :</label>
                 <textarea
@@ -99,16 +90,13 @@
                     id="additionnal"
                     placeholder="Informations complémentaires si nécessaire..."
                 ></textarea>
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[4]) && $getQueryString[4] != 1) echo $dataStatut[$getQueryString[4]]; ?></p>
         </fieldset>
 
-        <!-- Dates of beginning and ending (required) -->
         <fieldset>
             <legend id="toggle-dates" class="obligatory">Dates</legend>
 
-            <!-- Begin date of work -->
             <div class="field">
                 <label>Début de prestation :</label>
                 <input
@@ -122,7 +110,6 @@
                 />
             </div>        
 
-            <!-- End date of work -->
             <div class="field">
                 <label>Fin de prestation :</label>
                 <input
@@ -134,12 +121,10 @@
                     max="2050-12-31"
                     required
                 />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[5])) echo $dataStatut[$getQueryString[5]]; ?></p>
         </fieldset>
 
-        <!-- Leader (not required) -->
         <fieldset >
             <legend id="toggle-lead" class="optionnal">Chef de site</legend>
             <p class="recommandations">Recommandation : 1 chef de site pour un effectif total dépassant 20 agents</p>
@@ -147,19 +132,16 @@
             <div class="field">
                 <label for="lead-days">Combien de jours :</label>
                 <input type="number" name="lead-days" id="lead-days" />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[6]) && $getQueryString[6] != 1) echo $dataStatut[$getQueryString[6]]; ?></p>
 
             <div class="field">
                 <label for="lead-hours">Heures par jour :</label>
                 <input type="number" name="lead-hours" id="lead-hours" />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[7]) && $getQueryString[7] != 1) echo $dataStatut[$getQueryString[7]]; ?></p>
         </fieldset>
 
-        <!-- Team Leader (not required) -->
         <fieldset >
             <legend id="toggle-team" class="optionnal">Chef d'équipe</legend>
             <p class="recommandations">Recommandation : 1 chef d'équipe pour un effectif allant jusqu'a 20 agents</p>
@@ -167,19 +149,16 @@
             <div class="field">
                 <label for="team-days">Combien de jours :</label>
                 <input type="number" name="team-days" id="team-days" />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[8]) && $getQueryString[8] != 1) echo $dataStatut[$getQueryString[8]]; ?></p>
 
             <div class="field">
                 <label for="team-hours">Heures par jour :</label>
                 <input type="number" name="team-hours" id="team-hours" />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[9]) && $getQueryString[9] != 1) echo $dataStatut[$getQueryString[9]]; ?></p>
         </fieldset>
 
-        <!-- Support Team Leader Agent (not required) -->
         <fieldset >
             <legend id="toggle-support" class="optionnal">Adjoints chef d'équipe</legend>
             <p class="recommandations">Recommandation : 1 adjoint en plus pour chaque pallier de 20 agents</p>
@@ -187,106 +166,89 @@
             <div class="field">
                 <label for="support-number">Nombre :</label>
                 <input type="number" name="support-number" id="support-number" />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[10]) && $getQueryString[10] != 1) echo $dataStatut[$getQueryString[10]]; ?></p>
 
             <div class="field">
                 <label for="support-days">Combien de jours :</label>
                 <input type="number" name="support-days" id="support-days" />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[11]) && $getQueryString[11] != 1) echo $dataStatut[$getQueryString[11]]; ?></p>
 
             <div class="field">
                 <label for="support-hours">Heures par jour :</label>
                 <input type="number" name="support-hours" id="support-hours" />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[12]) && $getQueryString[12] != 1) echo $dataStatut[$getQueryString[12]]; ?></p>
         </fieldset>
 
-        <!-- Video Agent (not required) -->
         <fieldset >
             <legend id="toggle-video" class="optionnal">Opérateurs video</legend>
             <div class="field">
                 <label for="video-number">Nombre :</label>
                 <input type="number" name="video-number" id="video-number" />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[13]) && $getQueryString[13] != 1) echo $dataStatut[$getQueryString[13]]; ?></p>
 
             <div class="field">
                 <label for="video-days">Combien de jours :</label>
                 <input type="number" name="video-days" id="video-days" />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[14]) && $getQueryString[14] != 1) echo $dataStatut[$getQueryString[14]]; ?></p>
 
             <div class="field">
                 <label for="video-hours">Heures par jour :</label>
                 <input type="number" name="video-hours" id="video-hours" />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[15]) && $getQueryString[15] != 1) echo $dataStatut[$getQueryString[15]]; ?></p>
         </fieldset>
 
-        <!-- Simple Agent (required) -->
         <fieldset>
             <legend class="obligatory" id="toggle-agent">Agents de sécurité</legend>
             <div class="field">
                 <label for="agent-number">Nombre :</label>
                 <input type="number" name="agent-number" id="agent-number" required />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[16])) echo $dataStatut[$getQueryString[16]]; ?></p>
 
             <div class="field">
                 <label for="agent-days">Combien de jours :</label>
                 <input type="number" name="agent-days" id="agent-days" required />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[17])) echo $dataStatut[$getQueryString[17]]; ?></p>
 
             <div class="field">
                 <label for="agent-hours">Heures par jour :</label>
                 <input type="number" name="agent-hours" id="agent-hours" required />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[18])) echo $dataStatut[$getQueryString[18]]; ?></p>
         </fieldset>
 
-        <!-- Agent with dog (not required)-->
         <fieldset >
             <legend id="toggle-dog" class="optionnal">Agents cynophiles</legend>
 
             <div class="field">
                 <label for="dog-number">Nombre :</label>
                 <input type="number" name="dog-number" id="dog-number" />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[19]) && $getQueryString[19] != 1) echo $dataStatut[$getQueryString[19]]; ?></p>
 
             <div class="field">
                 <label for="dog-days">Combien de jours :</label>
                 <input type="number" name="dog-days" id="dog-days" />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[20]) && $getQueryString[20] != 1) echo $dataStatut[$getQueryString[20]]; ?></p>
             
             <div class="field">
                 <label for="dog-hours">Heures par jour :</label>
                 <input type="number" name="dog-hours" id="dog-hours" />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[21]) && $getQueryString[21] != 1) echo $dataStatut[$getQueryString[21]]; ?></p>
         </fieldset>
 
-        <!-- Personnal Contact informations of user (required) -->
         <fieldset class="last-fieldset">
             <legend class="obligatory" id="toggle-contact">Vos coordonnées</legend>
 
-            <!-- Last Name -->
             <div class="field">
                 <label for="last-name">Nom :</label>
                 <input 
@@ -296,11 +258,9 @@
                     value="<?php if(isset($result['lastName']) && !empty($result['lastName'])) echo htmlspecialchars($result['lastName']); ?>" 
                     required
                 />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[22])) echo $dataStatut[$getQueryString[22]]; ?></p>
 
-            <!-- First Name -->
             <div class="field">
                 <label for="first-name">Prénom :</label>
                 <input 
@@ -310,11 +270,9 @@
                     value="<?php if(isset($result['firstName']) && !empty($result['firstName'])) echo htmlspecialchars($result['firstName']); ?>" 
                     required
                 />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[23])) echo $dataStatut[$getQueryString[23]]; ?></p>
 
-            <!-- Society (not required) -->
             <div class="field">
                 <label for="society">Société (facultatif) :</label>
                 <input 
@@ -323,11 +281,9 @@
                     id="society" 
                     value="<?php if(isset($result['society']) && !empty($result['society'])) echo htmlspecialchars($result['society']); ?>" 
                 />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[24]) && $getQueryString[24] != 1) echo $dataStatut[$getQueryString[24]]; ?></p>
 
-            <!-- E-mail -->
             <div class="field">
                 <label for="mail">E-mail :</label>
                 <input 
@@ -337,11 +293,9 @@
                     value="<?php if(isset($result['mail']) && !empty($result['mail'])) echo htmlspecialchars($result['mail']); ?>" 
                     required
                 />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[25])) echo $dataStatut[$getQueryString[25]]; ?></p>
 
-            <!-- Phone Number -->
             <div class="field">
                 <label for="phone">Téléphone :</label>
                 <input 
@@ -351,15 +305,12 @@
                     value="<?php if(isset($result['phone']) && !empty($result['phone'])) echo htmlspecialchars($result['phone']); ?>" 
                     required
                 />
-            </div>
-            <!-- Notification message if an error has occurred -->
+            </div>            
             <p class="errors"><?php if(isset($getQueryString[26])) echo $dataStatut[$getQueryString[26]]; ?></p>
         </fieldset>
 
-        <!-- Will show the result of immediate quotation price -->
         <p id="estimation-price" class="quotation"></p>
 
-        <!-- Submit the demand for a quotation, will create a PDF user can download, and send a mail to FakeSecurity Team with details -->
         <input
             type="submit"
             name="submit"

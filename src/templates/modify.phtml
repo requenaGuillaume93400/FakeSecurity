@@ -1,10 +1,8 @@
 <!-- ======================================= MAIN ============================================== -->
 <main>
     <h1>Modification de profil</h1>
-
     <p><a href="bonus">Bonus</a></p>
-    
-    <!-- Admin form to edit users personnals account infos -->
+
     <form action="modify-<?= $memberStatut ?>-<?= $memberId ?>" method="POST" id="<?= $memberStatut ?>s">
     
         <fieldset class="edit">
@@ -12,22 +10,18 @@
                 N° <?= $memberId.' '.$result['firstName'].' '. $result['lastName']?>
             </legend>
 
-        <!-- CLIENTS OPTIONS -->
             <?php if( $memberStatut  === 'client'){ ?>
 
-                <!-- Society (not required) -->
                 <div class="field">
                     <label for="society">Société :</label>
                     <input type="text" name="society" id="society" value="<?php if($result['society'] !== 'NULL') echo $result['society']; ?>" />
                 </div>
 
-                <!-- Site Name (not required) -->
                 <div class="field">
                     <label for="site-name">Nom du site :</label>
                     <input type="text" name="site-name" id="site-name" value="<?php if($result['siteName'] != null) echo $result['siteName']; ?>" />
                 </div>
 
-                <!-- Site Type (not required) -->
                 <div class="field">
                     <label for="type">Type de site</label>
                     <select name="type" id="type">
@@ -57,61 +51,49 @@
                     
                     </select>
                 </div>
-                        
-                <!-- Superficie of site in m² (not required) -->
+
                 <div class="field">
                     <label for="superficie">Superficie du site en m² :</label>
                     <input type="number" name="superficie" id="superficie" value="<?php if($result['superficie'] != null) echo $result['superficie']; ?>"/>
                 </div>
 
-        <!-- AGENTS  OPTIONS -->
             <?php }elseif( $memberStatut  === 'agent'){ ?>
-
-                <!-- Matricule (not required) - only admin can edit this -->
                 <div class="field">
                     <label for="matricule">Matricule :</label>
                     <input type="text" name="matricule" id="matricule" value="<?= $result['matricule'] ?>"/>                    
                 </div>
 
-                <!-- Grade (not required) - only admin can edit this -->
                 <div class="field">
                     <label for="grade">Grade :</label>
                     <input type="text" name="grade" id="grade" value="<?= $result['grade'] ?>"/>
                 </div>
             <?php } ?>
 
-        <!-- ALL USERS COMMON INFOS -->
-            <!-- Address (not required) -->
             <div class="field">
                 <label for="address">Adresse :</label>
                 <input type="text" name="address" id="address" value="<?php if($result['address'] != null) echo $result['address']; ?>"/>
             </div>
 
-            <!-- Postal Code (not required) -->
             <div class="field">
                 <label for="postal">Code postal :</label>
                 <input type="text" name="postal" id="postal" value="<?php if($result['postalCode'] != null) echo $result['postalCode']; ?>"/>
             </div>
 
-            <!-- Town (not required) -->
             <div class="field">
                 <label for="city">Ville :</label>
                 <input type="text" name="city" id="city" value="<?php if($result['city'] != null) echo $result['city']; ?>" />
             </div>
 
-            <!-- Country (not required) -->
             <div class="field">
                 <label for="country">Pays :</label>
                 <input type="text" name="country" id="country" value="<?php if($result['country'] != null) echo $result['country']; ?>" />
             </div>
 
-            <!-- Last Name (required) -->
             <div class="field">
                 <label for="last-name-<?=  $memberStatut  ?>">Nom :</label>
                 <input type="text" name="last-name-<?=  $memberStatut  ?>" id="last-name-<?=  $memberStatut  ?>" value="<?= $result['lastName'] ?>" />
             </div>
 
-            <!-- First Name (required) -->
             <div class="field">
                 <label for="first-name-<?=  $memberStatut  ?>">Prénom :</label>
                 <input
@@ -122,25 +104,21 @@
                 />
             </div>
 
-            <!-- E-mail (required) -->
             <div class="field">
                 <label for="mail-<?=  $memberStatut  ?>">E-mail :</label>
                 <input type="email" name="mail-<?=  $memberStatut  ?>" id="mail-<?=  $memberStatut  ?>" value=<?= $result['mail'] ?> />
             </div>
 
-            <!-- Phone Number (required) -->
             <div class="field">
                 <label for="phone-<?=  $memberStatut  ?>">Téléphone :</label>
                 <input type="tel" name="phone-<?=  $memberStatut  ?>" id="phone-<?=  $memberStatut  ?>" value="<?= $result['phone'] ?>" />
             </div>
 
-            <!-- Password (not required) -->
             <div class="field">
                 <label for="pass-<?=  $memberStatut  ?>">Nouveau mot de passe :</label>
                 <input type="password" name="pass-<?=  $memberStatut  ?>" id="pass-<?=  $memberStatut  ?>" />
             </div>
 
-            <!-- Verif password (not required) -->
             <div class="field">
                 <label for="pass-verif-<?=  $memberStatut  ?>">Retapez le mot de passe :</label>
                 <input
@@ -150,7 +128,6 @@
                 />
             </div>
 
-            <!-- Submit agent & Submit client -->
             <input
                 type="submit"
                 name="submit-edit-<?=  $memberStatut  ?>"            
@@ -161,7 +138,6 @@
         </fieldset>
     </form>
 
-    <!-- List of ORDERS for current client -->
     <?php if($memberStatut === "client"){ 
             if($orders){ ?>
 
@@ -193,7 +169,6 @@
     <?php }else{ echo '<p>Vous n\'avez aucune commande</p>'; }
         } ?>
 
-    <!-- List of SANCTIONS for current agent -->
     <?php if($memberStatut === "agent" ){ 
         if($sanctions){ ?>
 

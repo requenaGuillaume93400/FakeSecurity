@@ -2,7 +2,6 @@
 <main>
     <h1>Mon compte</h1>
 
-    <!-- Customized message, depend on user statut (customer, admin & employee) -->
     <?php if($statut === 'client'){ ?>
 
         <p>Bienvenue cher <?= htmlspecialchars($result['firstName']).' '.htmlspecialchars($result['lastName']) ?></p>
@@ -13,34 +12,29 @@
                 <p><a href="bonus">Bonus</a></p>
                 <p>Bienvenue Admin et Seigneur Suprême <?= htmlspecialchars($result['firstName']).' '.htmlspecialchars($result['lastName']) ?>
       <?php }else{ ?>
-                <p>Salut <?= htmlspecialchars($result['firstName']).' '.htmlspecialchars($result['lastName']) ?>, remets toi vite au boulot feignant si tu veux avoir ton salaire !</p>
+                <p>Bonjour <?= htmlspecialchars($result['firstName']).' '.htmlspecialchars($result['lastName']) ?>.</p>
       <?php } ?>
       <p>Matricule : <span><?= htmlspecialchars($result['matricule']) ?></span></p>
       <p>Grade : <span><?= htmlspecialchars($result['grade']) ?></span></p>
     <?php  } ?>
 
-    <!-- Edit account infos FORM -->
     <form action="account-<?= $statut ?>-<?= $id ?>" method="POST" id="<?= $statut ?>s">
 
         <fieldset class="edit">
             <legend id="toggle-edit" class="optionnal">Editez votre profil</legend>
 
-        <!-- CLIENTS OPTIONS -->
             <?php if($statut === 'client'){ ?>
 
-                <!-- Society -->
                 <div class="field">
                     <label for="society">Société :</label>
                     <input type="text" name="society" id="society" value="<?php if($result['society'] !== 'NULL') echo htmlspecialchars($result['society']); ?>" />
                 </div>
 
-                <!-- Site Name -->
                 <div class="field">
                     <label for="site-name">Nom du site :</label>
                     <input type="text" name="site-name" id="site-name" value="<?php if($result['siteName'] != null) echo htmlspecialchars($result['siteName']); ?>" />
                 </div>
 
-                <!-- Site Type -->
                 <div class="field">
                     <label for="type">Type de site</label>
                     <select name="type" id="type">
@@ -72,8 +66,7 @@
                     
                     </select>
                 </div>
-                        
-                <!-- Superficie of Site -->
+
                 <div class="field">
                     <label for="superficie">Superficie du site en m² :</label>
                     <input type="number" name="superficie" id="superficie" value="<?php if($result['superficie'] != null) echo htmlspecialchars($result['superficie']); ?>"/>
@@ -81,33 +74,26 @@
 
             <?php } ?>
 
-
-        <!-- ALL USERS OPTIONS - Common -->
-            <!-- Address -->
             <div class="field">
                 <label for="address">Adresse :</label>
                 <input type="text" name="address" id="address" value="<?php if($result['address'] != null) echo htmlspecialchars($result['address']); ?>"/>
             </div>
 
-            <!-- Postal Code -->
             <div class="field">
                 <label for="postal">Code postal :</label>
                 <input type="text" name="postal" id="postal" value="<?php if($result['postalCode'] != null) echo htmlspecialchars($result['postalCode']); ?>"/>
             </div>
 
-            <!-- Town -->
             <div class="field">
                 <label for="city">Ville :</label>
                 <input type="text" name="city" id="city" value="<?php if($result['city'] != null) echo htmlspecialchars($result['city']); ?>" />
             </div>
 
-            <!-- Country -->
             <div class="field">
                 <label for="country">Pays :</label>
                 <input type="text" name="country" id="country" value="<?php if($result['country'] != null) echo htmlspecialchars($result['country']); ?>" />
             </div>
 
-            <!-- Last Name -->
             <div class="field">
                 <label for="last-name-<?= $statut ?>">Nom :</label>
                 <input 
@@ -119,7 +105,6 @@
                 />
             </div>
 
-            <!-- First Name -->
             <div class="field">
                 <label for="first-name-<?= $statut ?>">Prénom :</label>
                 <input
@@ -131,25 +116,21 @@
                 />
             </div>
 
-            <!-- E-mail -->
             <div class="field">
                 <label for="mail-<?= $statut ?>">E-mail :</label>
                 <input type="email" name="mail-<?= $statut ?>" id="mail-<?= $statut ?>" value=<?= htmlspecialchars($result['mail']) ?> required/>
             </div>
 
-            <!-- Phone Number -->
             <div class="field">
                 <label for="phone-<?= $statut ?>">Téléphone :</label>
                 <input type="tel" name="phone-<?= $statut ?>" id="phone-<?= $statut ?>" value="<?= htmlspecialchars($result['phone']) ?>" required/>
             </div>
 
-            <!-- Password -->
             <div class="field">
                 <label for="pass-<?= $statut ?>">Nouveau mot de passe :</label>
                 <input type="password" name="pass-<?= $statut ?>" id="pass-<?= $statut ?>" />
             </div>
 
-            <!-- Verif Password before edit password -->
             <div class="field">
                 <label for="pass-verif-<?= $statut ?>">Retapez le mot de passe :</label>
                 <input
@@ -159,7 +140,6 @@
                 />
             </div>
 
-            <!-- Submit edit account button for agent & client -->
             <input
                 type="submit"
                 name="submit-edit-<?= $statut ?>"            
@@ -169,7 +149,6 @@
         </fieldset>
     </form>
 
-    <!-- ORDERS -->
     <?php if($statut === "client"){ 
             if($orders){ ?>
         <div class="area">
@@ -200,7 +179,6 @@
     <?php }else{ echo '<p>Vous n\'avez pas encore de commande</p>'; }
         } ?>
 
-    <!-- SANCTIONS table -->
     <?php if($statut === "agent" ){ 
             if($sanctions){ ?>
         <div class="area">
@@ -226,7 +204,7 @@
                 </tbody>
             </table>
         </div>
-    <?php   }else{ echo '<p>Vous n\'avez pas encore de sanctions, faites un effort !</p>'; } 
+    <?php   }else{ echo '<p>Vous n\'avez pas encore de sanctions, tant mieux !</p>'; } 
           } ?>
 
     <form action="" method="POST">
