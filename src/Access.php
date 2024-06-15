@@ -6,7 +6,7 @@ class Access
     // Verify if you are connected (to give access to your account etc...), @return boolean
     public static function connected(): bool
     {
-        if(isset($_SESSION) && !empty($_SESSION)){
+        if(isset($_SESSION) && !empty($_SESSION) && array_key_exists('id', $_SESSION) && array_key_exists('statut', $_SESSION) ){
             return true;
         }
         return false;
